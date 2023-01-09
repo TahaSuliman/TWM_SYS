@@ -26,6 +26,7 @@ namespace Curly_TWM.Controllers
         private TWMDB db = new TWMDB();
         public ActionResult Index()
         {
+            Session["Style"] = "light";
             //just For you !
             return View(unitfw.emp_main.Find(c =>(c.emp_arnm !="super")).ToList());
         }
