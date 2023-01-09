@@ -1,0 +1,35 @@
+﻿.top-nav {
+    padding-top: 12px;
+    transform: translatey(35px);
+    -webkit-animation: 0.4s intro-top-menu-animation ease-in-out 0.33333s;
+    animation: 0.4s intro-top-menu-animation ease-in-out 0.33333s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    position: relative;
+    z-index: 50;
+    margin-top: -3px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    opacity: 0;
+    direction: rtl;
+}
+
+    .top-nav > ul li .top-menu .top-menu__title {
+        margin-right: 0.75rem;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+.dropdown-menu .dropdown-content {
+    transition: margin-top 0.2s;
+    box-shadow: 0px 3px 10px #00000017;
+    position: relative;
+    margin-top: 1.25rem;
+    width: 100%;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    direction: rtl;
+}

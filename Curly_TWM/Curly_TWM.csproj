@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{128B8E32-98AD-4B0B-9E16-C71A3E216853}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Curly_TWM</RootNamespace>
+    <AssemblyName>Curly_TWM</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44363</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalenderController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Initiative_OfficerController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\Organizational_ManagerController.cs" />
+    <Compile Include="Controllers\Organizational_StructureController.cs" />
+    <Compile Include="Controllers\Strategic_PlansController.cs" />
+    <Compile Include="Controllers\SysManController.cs" />
+    <Compile Include="Controllers\Team_MemberController.cs" />
+    <Compile Include="Domain\Entities\BaiseEntity.cs" />
+    <Compile Include="Domain\Entities\Branchs.cs" />
+    <Compile Include="Domain\Entities\countries.cs" />
+    <Compile Include="Domain\Entities\Departments.cs" />
+    <Compile Include="Domain\Entities\emp_main.cs" />
+    <Compile Include="Domain\Entities\emp_training.cs" />
+    <Compile Include="Domain\Entities\Initiatives.cs" />
+    <Compile Include="Domain\Entities\InitiativesTasksUploas.cs" />
+    <Compile Include="Domain\Entities\InitiativesUploas.cs" />
+    <Compile Include="Domain\Entities\Jobs.cs" />
+    <Compile Include="Domain\Entities\MainDepartments.cs" />
+    <Compile Include="Domain\Entities\OperationalIndicators.cs" />
+    <Compile Include="Domain\Entities\Partners.cs" />
+    <Compile Include="Domain\Entities\RiskList.cs" />
+    <Compile Include="Domain\Entities\Sections.cs" />
+    <Compile Include="Domain\Entities\Strategic_Plans.cs" />
+    <Compile Include="Domain\Entities\Strategic_Targets.cs" />
+    <Compile Include="Domain\Entities\Teams.cs" />
+    <Compile Include="Domain\Entities\Team_Tasks.cs" />
+    <Compile Include="Domain\Entities\uploaddocs.cs" />
+    <Compile Include="Domain\Interfaces\IBranchsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IDepartmentsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IEmp_mainRepository.cs" />
+    <Compile Include="Domain\Interfaces\Iemp_trainingRepository.cs" />
+    <Compile Include="Domain\Interfaces\IGenericRepository.cs" />
+    <Compile Include="Domain\Interfaces\IInitiativesRepository.cs" />
+    <Compile Include="Domain\Interfaces\IJobsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IMainDepartmentsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IOperationalIndicatorsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IPartnersRepository.cs" />
+    <Compile Include="Domain\Interfaces\IRiskListRepository.cs" />
+    <Compile Include="Domain\Interfaces\ISectionsRepository.cs" />
+    <Compile Include="Domain\Interfaces\IStrategic_PlansRepository.cs" />
+    <Compile Include="Domain\Interfaces\IStrategic_TargetsRepository.cs" />
+    <Compile Include="Domain\Interfaces\ITeamsRepository.cs" />
+    <Compile Include="Domain\Interfaces\ITeam_TasksRepository.cs" />
+    <Compile Include="Domain\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\DbaseContext\TWMDB.cs" />
+    <Compile Include="Infrastructure\Helpers\SeedData.cs" />
+    <Compile Include="Infrastructure\Repositories\BranchsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\DepartmentsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Emp_mainRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\emp_trainingRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\GenericRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\InitiativesRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\JobsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\MainDepartmentsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\OperationalIndicatorsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\PartnersRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\RiskListRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\SectionsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Strategic_PlansRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Strategic_TargetsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\TeamsRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\Team_TasksRepository.cs" />
+    <Compile Include="Infrastructure\Repositories\UnitOfWork.cs" />
+    <Compile Include="Migrations\202301031328251_ndb.cs" />
+    <Compile Include="Migrations\202301031328251_ndb.designer.cs">
+      <DependentUpon>202301031328251_ndb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Empviewmodel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Teamsviewmodel.cs" />
+    <Compile Include="Models\tviewmodel.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Models\xviewmodel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dist\css\app.css" />
+    <Content Include="Content\dist\css\custom.css" />
+    <Content Include="Content\dist\css\_app.css" />
+    <Content Include="Content\dist\fonts\roboto\LICENSE.txt" />
+    <Content Include="Content\dist\images\bg-main-dark.svg" />
+    <Content Include="Content\dist\images\bg-main.svg" />
+    <Content Include="Content\dist\images\error-illustration.svg" />
+    <Content Include="Content\dist\images\food-beverage-1.jpg" />
+    <Content Include="Content\dist\images\food-beverage-10.jpg" />
+    <Content Include="Content\dist\images\food-beverage-11.jpg" />
+    <Content Include="Content\dist\images\food-beverage-12.jpg" />
+    <Content Include="Content\dist\images\food-beverage-13.jpg" />
+    <Content Include="Content\dist\images\food-beverage-14.jpg" />
+    <Content Include="Content\dist\images\food-beverage-15.jpg" />
+    <Content Include="Content\dist\images\food-beverage-16.jpg" />
+    <Content Include="Content\dist\images\food-beverage-17.jpg" />
+    <Content Include="Content\dist\images\food-beverage-18.jpg" />
+    <Content Include="Content\dist\images\food-beverage-19.jpg" />
+    <Content Include="Content\dist\images\food-beverage-2.jpg" />
+    <Content Include="Content\dist\images\food-beverage-3.jpg" />
+    <Content Include="Content\dist\images\food-beverage-4.jpg" />
+    <Content Include="Content\dist\images\food-beverage-5.jpg" />
+    <Content Include="Content\dist\images\food-beverage-6.jpg" />
+    <Content Include="Content\dist\images\food-beverage-7.jpg" />
+    <Content Include="Content\dist\images\food-beverage-8.jpg" />
+    <Content Include="Content\dist\images\food-beverage-9.jpg" />
+    <Content Include="Content\dist\images\illustration.svg" />
+    <Content Include="Content\dist\images\logo.svg" />
+    <Content Include="Content\dist\images\map-marker-dark.svg" />
+    <Content Include="Content\dist\images\map-marker-region-dark.svg" />
+    <Content Include="Content\dist\images\map-marker-region.svg" />
+    <Content Include="Content\dist\images\map-marker.svg" />
+    <Content Include="Content\dist\images\phone-illustration.svg" />
+    <Content Include="Content\dist\images\placeholders\200x200.jpg" />
+    <Content Include="Content\dist\images\placeholders\800x800.jpg" />
+    <Content Include="Content\dist\images\preview-1.jpg" />
+    <Content Include="Content\dist\images\preview-10.jpg" />
+    <Content Include="Content\dist\images\preview-11.jpg" />
+    <Content Include="Content\dist\images\preview-12.jpg" />
+    <Content Include="Content\dist\images\preview-13.jpg" />
+    <Content Include="Content\dist\images\preview-14.jpg" />
+    <Content Include="Content\dist\images\preview-15.jpg" />
+    <Content Include="Content\dist\images\preview-16.jpg" />
+    <Content Include="Content\dist\images\preview-17.jpg" />
+    <Content Include="Content\dist\images\preview-18.jpg" />
+    <Content Include="Content\dist\images\preview-19.jpg" />
+    <Content Include="Content\dist\images\preview-2.jpg" />
+    <Content Include="Content\dist\images\preview-3.jpg" />
+    <Content Include="Content\dist\images\preview-4.jpg" />
+    <Content Include="Content\dist\images\preview-5.jpg" />
+    <Content Include="Content\dist\images\preview-6.jpg" />
+    <Content Include="Content\dist\images\preview-7.jpg" />
+    <Content Include="Content\dist\images\preview-8.jpg" />
+    <Content Include="Content\dist\images\preview-9.jpg" />
+    <Content Include="Content\dist\images\profile-1.jpg" />
+    <Content Include="Content\dist\images\profile-10.jpg" />
+    <Content Include="Content\dist\images\profile-11.jpg" />
+    <Content Include="Content\dist\images\profile-12.jpg" />
+    <Content Include="Content\dist\images\profile-13.jpg" />
+    <Content Include="Content\dist\images\profile-14.jpg" />
+    <Content Include="Content\dist\images\profile-15.jpg" />
+    <Content Include="Content\dist\images\profile-16.jpg" />
+    <Content Include="Content\dist\images\profile-17.jpg" />
+    <Content Include="Content\dist\images\profile-18.jpg" />
+    <Content Include="Content\dist\images\profile-19.jpg" />
+    <Content Include="Content\dist\images\profile-2.jpg" />
+    <Content Include="Content\dist\images\profile-3.jpg" />
+    <Content Include="Content\dist\images\profile-4.jpg" />
+    <Content Include="Content\dist\images\profile-5.jpg" />
+    <Content Include="Content\dist\images\profile-6.jpg" />
+    <Content Include="Content\dist\images\profile-7.jpg" />
+    <Content Include="Content\dist\images\profile-8.jpg" />
+    <Content Include="Content\dist\images\profile-9.jpg" />
+    <Content Include="Content\dist\images\woman-illustration.svg" />
+    <Content Include="Content\dist\js\app.js" />
+    <Content Include="Content\dist\js\app.js.LICENSE.txt" />
+    <Content Include="Content\dist\js\ckeditor-balloon-block.js" />
+    <Content Include="Content\dist\js\ckeditor-balloon-block.js.LICENSE.txt" />
+    <Content Include="Content\dist\js\ckeditor-balloon.js" />
+    <Content Include="Content\dist\js\ckeditor-balloon.js.LICENSE.txt" />
+    <Content Include="Content\dist\js\ckeditor-classic.js" />
+    <Content Include="Content\dist\js\ckeditor-classic.js.LICENSE.txt" />
+    <Content Include="Content\dist\js\ckeditor-document.js" />
+    <Content Include="Content\dist\js\ckeditor-document.js.LICENSE.txt" />
+    <Content Include="Content\dist\js\ckeditor-inline.js" />
+    <Content Include="Content\dist\js\ckeditor-inline.js.LICENSE.txt" />
+    <Content Include="Content\top-menu-light-regular-form.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fa-brands-400.svg" />
+    <Content Include="fonts\fa-regular-400.svg" />
+    <Content Include="fonts\fa-solid-900.svg" />
+    <Content Include="fonts\flaticon.css" />
+    <Content Include="fonts\Flaticon.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\gijgo-material.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\icofont.svg" />
+    <Content Include="fonts\themify.svg" />
+    <Content Include="Fonts_Face.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="icofont.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\dist\.DS_Store" />
+    <Content Include="Content\dist\css\.DS_Store" />
+    <Content Include="Content\dist\fonts\.DS_Store" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Black.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-BlackItalic.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Bold.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-BoldItalic.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Italic.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Light.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-LightItalic.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Medium.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-MediumItalic.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Regular.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-Thin.ttf" />
+    <Content Include="Content\dist\fonts\roboto\Roboto-ThinItalic.ttf" />
+    <Content Include="Content\dist\images\.DS_Store" />
+    <Content Include="Content\dist\images\placeholders\.DS_Store" />
+    <Content Include="Content\dist\json\location.json" />
+    <Content Include="Content\dist\js\.DS_Store" />
+    <Content Include="fonts\DroidKufi-Regular.ttf" />
+    <Content Include="fonts\Eng1.otf" />
+    <Content Include="fonts\fa-brands-400.eot" />
+    <Content Include="fonts\fa-brands-400.ttf" />
+    <Content Include="fonts\fa-brands-400.woff" />
+    <Content Include="fonts\fa-brands-400.woff2" />
+    <Content Include="fonts\fa-regular-400.eot" />
+    <Content Include="fonts\fa-regular-400.ttf" />
+    <Content Include="fonts\fa-regular-400.woff" />
+    <Content Include="fonts\fa-regular-400.woff2" />
+    <Content Include="fonts\fa-solid-900.eot" />
+    <Content Include="fonts\fa-solid-900.ttf" />
+    <Content Include="fonts\fa-solid-900.woff" />
+    <Content Include="fonts\fa-solid-900.woff2" />
+    <Content Include="fonts\Flaticon.eot" />
+    <Content Include="fonts\Flaticon.ttf" />
+    <Content Include="fonts\Flaticon.woff" />
+    <Content Include="fonts\Flaticon.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\GE_SS_Two_Bold.otf" />
+    <Content Include="fonts\GE_SS_Two_Light.otf" />
+    <Content Include="fonts\gijgo-material.eot" />
+    <Content Include="fonts\gijgo-material.ttf" />
+    <Content Include="fonts\gijgo-material.woff" />
+    <Content Include="fonts\icofont.eot" />
+    <Content Include="fonts\icofont.ttf" />
+    <Content Include="fonts\icofont.woff" />
+    <Content Include="fonts\icofont.woff2" />
+    <Content Include="fonts\jazeera_light.ttf" />
+    <Content Include="fonts\Proza-Regular.otf" />
+    <Content Include="fonts\SEGOEUI.TTF" />
+    <Content Include="fonts\SEGOEUIB.TTF" />
+    <Content Include="fonts\SEGOEUII.TTF" />
+    <Content Include="fonts\SEGOEUIL.TTF" />
+    <Content Include="fonts\SEGOEUIZ.TTF" />
+    <Content Include="fonts\SEGUISB.TTF" />
+    <Content Include="fonts\themify.eot" />
+    <Content Include="fonts\themify.ttf" />
+    <Content Include="fonts\themify.woff" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\Documents\13-3-2022-19-13-41TQUV.png" />
+    <Content Include="Uploads\Documents\13-3-2022-19-13-50DFNW.png" />
+    <Content Include="Uploads\Documents\15-3-2022-10-55-43RAHU.png" />
+    <Content Include="Uploads\Documents\16-3-2022-19-35-51CFSN.png" />
+    <Content Include="Uploads\Documents\16-3-2022-19-36-18EKFL.png" />
+    <Content Include="Uploads\Documents\16-3-2022-19-43-35LLDB.png" />
+    <Content Include="Uploads\Documents\16-3-2022-19-44-18OWDH.png" />
+    <Content Include="Uploads\Documents\16-3-2022-19-45-10HZGR.png" />
+    <Content Include="Uploads\Documents\16-3-2022-21-49-22APHZ.png" />
+    <Content Include="Uploads\Documents\16-3-2022-21-49-46JJQJ.png" />
+    <Content Include="Uploads\Documents\17-3-2022-11-30-28RKEO.jpg" />
+    <Content Include="Uploads\Documents\17-3-2022-11-31-01BHDM.png" />
+    <Content Include="Uploads\Documents\17-3-2022-11-32-05AZWM.png" />
+    <Content Include="Uploads\Documents\23-3-2022-23-08-22WTNJ.png" />
+    <Content Include="Uploads\Documents\Me.jpeg" />
+    <Content Include="Uploads\Documents\noimage.png" />
+    <Content Include="Uploads\Messages\17-5-2021-22-45-320QBXV.png" />
+    <Content Include="Uploads\Messages\21-5-2021-21-54-480NVEP.png" />
+    <Content Include="Uploads\Messages\21-5-2021-21-54-481REIC.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_Layout.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Land.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Main.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Uploads\Avatars\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202301031328251_ndb.resx">
+      <DependentUpon>202301031328251_ndb.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62447</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44363/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

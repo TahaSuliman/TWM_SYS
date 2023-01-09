@@ -1,0 +1,44 @@
+﻿@font-face {
+    font-family: myfont1;
+    src: url('../fonts/DroidKufi-Regular.ttf')
+}
+
+@font-face {
+    font-family: myfont2;
+    src: url('../fonts/DroidKufi-Regular.ttf')
+}
+
+@font-face {
+    font-family: myfont3;
+    src: url('../fonts/jazeera_light.ttf')
+}
+
+@font-face {
+    font-family: myfont4;
+    src: url('../fonts/DroidKufi-Regular.ttf')
+}
+@font-face {
+    font-family: 'english';
+    src: url('../fonts/Eng1.otf') format('truetype');
+}
+@font-face {
+    font-family: 'english1';
+    src: url('../fonts/Proza-Regular.otf')
+}
+@font-face {
+    font-family: 'english2';
+    src: url('../fonts/GE_SS_Two_Light.otf')
+}
+html, body, .form-control, .btn, #sidebar-menu > ul > li > a > span {
+    font-family: myfont4 !important;
+    font-size: 10pt !important
+}
+.form-control, .btn {
+    font-family: myfont4 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: myfont4 !important
+}
+tbody ,table th{
+    font-size: 8pt!important
+}

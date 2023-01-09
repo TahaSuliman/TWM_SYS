@@ -1,0 +1,235 @@
+﻿@model Curly_TWM.Infrastructure.DbaseContext.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/Home/_LayoutAdmin.cshtml";
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<!-- SweetAlert2 -->
+<link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" />
+<script src="~/Content/plugins/sweet-alert2/sweetalert2.js"></script>
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+        <div class="d-flex flex-wrap flex-stack my-5">
+            <!--begin::Controls-->
+            <div class="d-flex flex-wrap my-1" data-select2-id="select2-data-123-oh5f">
+                <!--begin::Select wrapper-->
+                <div class="m-0" data-select2-id="select2-data-122-ckv0">
+
+                </div>
+                <!--end::Select wrapper-->
+            </div>
+            <!--end::Controls-->
+            <!--begin::Heading-->
+            <h2 class="fs-2 fw-bold my-2">
+                <span class="fs-6 text-gray-400 ms-1">ادارة مهام الفريق</span><br />
+                @ViewBag.InitiativeName
+            </h2>
+            <!--end::Heading-->
+
+        </div>
+
+        <div class="row gy-5 g-xl-10">
+            <div class="col-xxl-4">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xl-stretch mb-xl-10">
+
+                    <!--begin::Header-->
+                    <div class="card-header align-items-center border-0" style="direction: rtl;">
+                        <!--begin::Title-->
+                        <h3 class="card-title fw-bolder text-dark fs-3">بيانات المستخدم</h3>
+                        <!--end::Title-->
+
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body py-3">
+                        <dl class="dl-horizontal fc-direction-rtl">
+                            <dt>
+                             اسم المستخدم
+                            </dt>
+
+                            <dd class="cou">
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+      
+                            <dt>
+                               الاسم
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.emp_main.emp_arnm)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-fw" href="@Url.Action("Main", "Account")"> عودة للقائمة</a>
+
+                    </div>
+
+                </div>
+                <!--end::Tables Widget 9-->
+            </div>
+            <div class="col-xxl-8">
+                <!--begin::Tables Widget 9-->
+                <div class="card card-xl-stretch mb-xl-10">
+
+
+                    <!--begin::Body-->
+                    <div class="card-body py-3" style="direction:rtl">
+
+
+
+
+                        @using (Html.BeginForm("Details", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                        <div class="card card-flush card-p-0 shadow-none bg-transparent mb-5">
+                            <!--begin::Header-->
+                            <div class="card-header align-items-center border-0">
+                                <!--begin::Title-->
+                                <h3 class="card-title fw-bolder text-dark fs-3">قائمة صلاحيات المستخدم</h3>
+                                <!--end::Title-->
+
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Header-->
+                            <div class="card-header align-items-center border-0">
+                                <input type="hidden" id="UserId" name="UserId" value="@Model.Id" />                                        
+                                @Html.DropDownList("RoleId", (IEnumerable<SelectListItem>)ViewBag.RoleId, " ... اختر الصلاحية ...", new { @class = "form-select form-select-solid select2-hidden-accessible", @data_control = "select2", @tabindex = "-1", @aria_hidden = "true" })
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body py-0">
+                                @foreach (var item in ViewBag.UserRole)
+                                {
+
+                                    <div class="d-flex flex-nowrap align-items-center mb-7">
+                                        <!--begin::Symbol-->
+                                        <div class="symbol symbol-50px me-5">
+                                            <span class="symbol-label sidebar-bg-muted">
+
+
+                                                <span class="svg-icon svg-icon-2x svg-icon-primary">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
+                                                        <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
+                                                    </svg>
+                                                </span>
+
+                                            </span>
+                                        </div>
+                                        <!--end::Symbol-->
+                                        <!--begin::Text-->
+                                        <div class="d-flex flex-column">
+                                            <span class="text-dark text-hover-primary fs-6 fw-bolder">@item</span>
+                                            <span class="sidebar-text-muted fw-bold">
+                                                @Html.ActionLink("Delete", "Delete", new { RoleName = item, UserId = Model.Id })
+                                            </span>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                }
+                            </div>
+                            <!--end::Body-->
+                            <div class="card-footer">
+                                <button type="submit" name="submit" value="اضافة الصلاحية" class="btn btn-success waves-effect waves-light">حفظ</button>
+
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    <!--begin::Body-->
+                </div>
+                <!--end::Tables Widget 9-->
+            </div>
+        </div>
+
+
+
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Content-->
+
+
+<script>
+      //Success Message
+    if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        //alert('hello world');
+    }
+    else {
+               var title = '@TempData["title"]';
+               var type = '@TempData["type"]';
+               var success = '@TempData["SuccessMsg"]';
+            if (success != "" && success !=null) {
+                swal(
+                    {
+                        title: title,
+                        text: success,
+                        type: type,
+                        button: "موافق ",
+
+                        confirmButtonClass: 'btn btn-success',
+                        timer: 1500
+
+                    }
+                )
+
+            }
+            //Success Message
+
+    }
+
+
+
+    //*********************************
+    function Delete(id, Name) {
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you can't recover this record!",
+            icon: "warning",
+            buttons: ["Cancel", "Yes, delete it !!"],
+
+            //buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    $.ajax({
+                        url: "/HR/Delete/" + id,
+                        type: "POST",
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (result) {
+
+                            swal("Poof! Your imaginary record has been deleted!", {
+                                icon: "success",
+                            });
+                            $("#here").load(window.location.href + " #here");
+
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
+                    });
+
+                }
+            });
+    }
+    //*********************************
+</script>
+
+
+
+
+
+
