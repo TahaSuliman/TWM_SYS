@@ -27,7 +27,7 @@ namespace Curly_TWM.Controllers
         public ActionResult Index()
         {
             Session["Style"] = "light";
-            //just For you !
+            //just For you ! Again
             return View(unitfw.emp_main.Find(c =>(c.emp_arnm !="super")).ToList());
         }
         // GET: HR/Create
