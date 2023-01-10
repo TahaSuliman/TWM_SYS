@@ -1,61 +1,112 @@
-﻿
+﻿@model IEnumerable<Curly_TWM.Domain.Entities.emp_main>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Home/_Layout.cshtml";
 }
 
-<!-- BEGIN: Content -->
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" type="text/css">
+<!-- Sweet-Alert  -->
+<script src="~/Content/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="~/Content/assets/pages/sweet-alert.init.js"></script>
+
 <div class="content" style="direction:rtl;text-align:right">
-    <div class="intro-y flex items-center mt-8">
-        <h2 class="text-lg font-medium ml-auto">
-            الرئيسية
-        </h2>
-    </div>
 
-    <!--<div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 ">-->
-            <!-- BEGIN: Input -->
-            <!--<div class="intro-y box">
-                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="font-medium text-base ml-auto">
-                        Input
-                    </h2>
+    <div class="col-span-12 mt-6">
+        <div class="intro-y block sm:flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+                قائمة الموظفين
+            </h2>
+            <p>@Model.Count()</p>
+            <div class="flex items-center sm:mr-auto mt-3 sm:mt-0">
+                <a href="@Url.Action("Create","Home")" class="btn btn-sm btn-primary mr-1 mb-2"><i data-lucide="plus"></i> اضافة </a>
+            </div>
+        </div>
 
+        <div class="intro-y  mt-8 sm:mt-0">
+            <div class="p-5" id="responsive-table">
+                <div class="preview">
+
+                        <table class="table" style="direction:rtl;text-align:right">
+                            <thead>
+                                <tr>
+
+                                    <th class="whitespace-nowrap">
+                                        الاسم
+                                    </th>
+                                    <th class="whitespace-nowrap">
+                                        الادارة
+                                    </th>
+
+                                    <th class="whitespace-nowrap w-10">الخيارات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="">
+
+
+                                        <td class="whitespace-nowrap">
+                                            <a href="" class="font-medium whitespace-nowrap">@Html.DisplayFor(modelItem => item.emp_arnm) </a>
+                                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5"> @Html.DisplayFor(modelItem => item.emp_code) </div>
+                                        </td>
+                                        
+                                        <td class="whitespace-nowrap">
+                                            <a href="" class="font-medium whitespace-nowrap">@Html.DisplayFor(modelItem => item.Branchs.Sections.Departments.DepartmentName) </a>
+                                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5"> @Html.DisplayFor(modelItem => item.Branchs.BranchsName) </div>
+                                        </td>
+
+                                        <td class="w-40">
+                                            <div class="dropdown ml-3" style="position: relative;">
+                                                <a href="javascript:;" class="dropdown-toggle w-5 h-5 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="more-vertical" data-lucide="more-vertical" class="lucide lucide-more-vertical w-4 h-4"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg> </a>
+                                                <div class="dropdown-menu w-40" id="_ksnykoqt9" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 16px, 0px);">
+                                                    <ul class="dropdown-content">
+                                                        <li>
+                                                            <a href="@Url.Action("Details", "HR" , new { id=item.Id})" class="dropdown-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file-text" data-lucide="file-text" class="lucide lucide-file-text w-4 h-4 ml-2">
+                                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                                    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                                                </svg>
+                                                               التفاصيل
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="dropdown-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="edit-2" data-lucide="edit-2" class="lucide lucide-edit-2 w-4 h-4 ml-2">
+                                                                    <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                                </svg>
+                                                              تعديل
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="@Url.Action("CreateDoc", "Home" , new { id=item.Id})" class="dropdown-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="paperclip" data-lucide="paperclip" class="lucide lucide-paperclip w-4 h-4 ml-2">
+                                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                                    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                                                </svg>
+
+                                                                اضافة المرفقات
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+             
                 </div>
-                <div id="input" class="p-5">
-                    <div class="preview">
-                        <div>
-                            <label for="regular-form-1" class="form-label">Input Text</label>
-                            <input id="regular-form-1" type="text" class="form-control" placeholder="Input text">
-                        </div>
-                        <div class="mt-3">
-                            <label for="regular-form-2" class="form-label">Rounded</label>
-                            <input id="regular-form-2" type="text" class="form-control form-control-rounded" placeholder="Rounded">
-                        </div>
-                        <div class="mt-3">
-                            <label for="regular-form-3" class="form-label">With Help</label>
-                            <input id="regular-form-3" type="text" class="form-control" placeholder="With help">
-                            <div class="form-help">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                        </div>
-                        <div class="mt-3">
-                            <label for="regular-form-4" class="form-label">Password</label>
-                            <input id="regular-form-4" type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="mt-3">
-                            <label for="regular-form-5" class="form-label">Disabled</label>
-                            <input id="regular-form-5" type="text" class="form-control" placeholder="Disabled" disabled>
-                        </div>
-                    </div>
-                    <div class="source-code hidden">
-                        <button data-target="#copy-input" class="copy-code btn py-1 px-2 btn-outline-secondary"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Copy example code </button>
-                        <div class="overflow-y-auto mt-3 rounded-md">
-                            <pre id="copy-input" class="source-preview"> <code class="html"> HTMLOpenTagdivHTMLCloseTag HTMLOpenTaglabel for=&quot;regular-form-1&quot; class=&quot;form-label&quot;HTMLCloseTagInput TextHTMLOpenTag/labelHTMLCloseTag HTMLOpenTaginput id=&quot;regular-form-1&quot; type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Input text&quot;HTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;mt-3&quot;HTMLCloseTag HTMLOpenTaglabel for=&quot;regular-form-2&quot; class=&quot;form-label&quot;HTMLCloseTagRoundedHTMLOpenTag/labelHTMLCloseTag HTMLOpenTaginput id=&quot;regular-form-2&quot; type=&quot;text&quot; class=&quot;form-control form-control-rounded&quot; placeholder=&quot;Rounded&quot;HTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;mt-3&quot;HTMLCloseTag HTMLOpenTaglabel for=&quot;regular-form-3&quot; class=&quot;form-label&quot;HTMLCloseTagWith HelpHTMLOpenTag/labelHTMLCloseTag HTMLOpenTaginput id=&quot;regular-form-3&quot; type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;With help&quot;HTMLCloseTag HTMLOpenTagdiv class=&quot;form-help&quot;HTMLCloseTagLorem Ipsum is simply dummy text of the printing and typesetting industry.HTMLOpenTag/divHTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;mt-3&quot;HTMLCloseTag HTMLOpenTaglabel for=&quot;regular-form-4&quot; class=&quot;form-label&quot;HTMLCloseTagPasswordHTMLOpenTag/labelHTMLCloseTag HTMLOpenTaginput id=&quot;regular-form-4&quot; type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;Password&quot;HTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;mt-3&quot;HTMLCloseTag HTMLOpenTaglabel for=&quot;regular-form-5&quot; class=&quot;form-label&quot;HTMLCloseTagDisabledHTMLOpenTag/labelHTMLCloseTag HTMLOpenTaginput id=&quot;regular-form-5&quot; type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Disabled&quot; disabledHTMLCloseTag HTMLOpenTag/divHTMLCloseTag </code> </pre>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
         </div>
-    </div>-->
+
+    </div>
 </div>
-<!-- END: Content -->
+

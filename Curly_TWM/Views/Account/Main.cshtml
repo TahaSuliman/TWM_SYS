@@ -2,162 +2,109 @@
 
 @{
     ViewBag.Title = "Main";
-    //Layout = "~/Views/Home/_LayoutAdmin.cshtml";
-    Layout = null;
+    Layout = "~/Views/Home/_Layout.cshtml";
+
 }
 <script src="~/Scripts/jquery-3.4.1.js"></script>
-<!-- SweetAlert2 -->
-<link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" />
-<script src="~/Content/plugins/sweet-alert2/sweetalert2.js"></script>
+<link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" type="text/css">
+<!-- Sweet-Alert  -->
+<script src="~/Content/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="~/Content/assets/pages/sweet-alert.init.js"></script>
 
-@* New *@
-<div class="content flex-row-fluid" id="here">
-    <div class="row gy-5 g-xl-8">
+<div class="content" style="direction:rtl;text-align:right">
 
-        <!--begin::Col-->
-        <div class="col-xl-12" style="text-align:right;direction:rtl">
-            <!--begin::Tables Widget 9-->
-            <div class="card card-xl-stretch mb-5 mb-xl-8">
-                <!--begin::Header-->
-                <div class="card-header border-0 pt-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bolder fs-3 mb-1">قائمة الموظفين</span>
-                        <span class="text-muted mt-1 fw-bold fs-7"> العدد الاجمالي : <span class="cou">@Model.Count()</span></span>
-                    </h3>
-                    <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="" data-bs-original-title="اضافة موظف">
-
-                    </div>
-                </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body py-3">
-                    <!--begin::Table container-->
-                    <div class="table-responsive">
-                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                            <thead>
-                                <tr class="fw-bolder text-muted">
-                               
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.emp_code)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.emp_arnm)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.emp_ennm)
-                                    </th>
-                                    <th style="text-align: left;">الخيارات</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                     
-                                        <td class="cou">
-                                            @Html.DisplayFor(modelItem => item.emp_code)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.emp_arnm)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.emp_ennm)
-                                        </td>
-
-                                        <td>
-
-                                            <div class="d-flex justify-content-end flex-shrink-0">
-
-                                                @{
-                                                    if (item.remarks == "888")
-                                                    {
-
-                                                        <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Organizational_Manager"})" class="btn btn-primary btn-fw btn-sm" > تعيين كمستخدم</a>
-
-                                                    }
-                                                    else if (item.remarks == "False")
-                                                    {
-
-                                                        <a class="btn btn-primary btn-fw btn-sm" style="margin-left: 5px;" href="@Url.Action("Details", "Account" , new { id=item.Id})"> الصلاحيات</a>
-                                                        <a class="btn btn-danger btn-fw btn-sm" href="@Url.Action("Suspend", "Account", new { id = item.Id })"> ايقاف</a>
-
-                                                    }
-                                                    else if (item.remarks == "True")
-                                                    {
-                                                        <a class="btn btn-primary btn-fw btn-sm" style="margin-left: 5px;" href="@Url.Action("Details", "Account" , new { id=item.Id})"> الصلاحيات</a>
-
-                                                        <a class="btn btn-success btn-fw btn-sm" href="@Url.Action("UnSuspend", "Account", new { id = item.Id })"> اعتماد</a>
-
-                                                    }
-                                                }
-
-                                            </div>
-                                        </td>
-                                        <td>
-          
-                                            @*<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary show menu-dropdown btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                            <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"></rect>
-                                                            <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                            <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                            <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                        </g>
-                                                    </svg>
-                                                </span>
-                                            </button>
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true" style="z-index: 105; position: fixed; inset: auto 0px 0px auto; margin: 0px; transform: translate(-351px, -210px);" data-popper-placement="top-end">
-                                                <div class="menu-item px-3">
-                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Organizational_Manager"})" class="menu-link px-3">اضافة صلاحية مدير المنظمة</a>
-                                                </div>
-
-                                                <div class="menu-item px-3">
-                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="System_Manager"})" class="menu-link px-3">اضافة مدير النظام</a>
-                                                </div>
-
-                                                <div class="menu-item px-3">
-                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Initiative_Officer"})" class="menu-link px-3">اضافة مسؤول مبادرة</a>
-                                                </div>
-
-                                                <div class="menu-item px-3">
-                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Team_Member"})" class="menu-link px-3">اضافة عضو لفريق</a>
-                                                </div>
-
-                                                <div class="menu-item px-3">
-                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Admin"})" class="menu-link px-3">اضافة صلاحية مسؤول الاعدادات</a>
-                                                </div>
-
-                                            </div>*@
-
-                                        </td>
-                                    </tr>
-
-
-                                }
-
-
-                            </tbody>
-                            <!--end::Table body-->
-                        </table>
-
-                        <!--end::Table-->
-                    </div>
-                    <!--end::Table container-->
-                </div>
-                <!--begin::Body-->
+    <div class="col-span-12 mt-6">
+        <div class="intro-y block sm:flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+                قائمة الموظفين
+            </h2>
+            <p>@Model.Count()</p>
+            <div class="flex items-center sm:mr-auto mt-3 sm:mt-0">
+                <a href="@Url.Action("Create","Home")" class="btn btn-sm btn-primary mr-1 mb-2"><i data-lucide="plus"></i> اضافة </a>
             </div>
-            <!--end::Tables Widget 9-->
         </div>
-        <!--end::Col-->
+
+        <div class="intro-y  mt-8 sm:mt-0">
+            <div class="p-5" id="responsive-table">
+                <div class="preview">
+
+                    <table class="table" style="direction:rtl;text-align:right">
+                        <thead>
+                            <tr>
+
+                                <th class="whitespace-nowrap">
+                                    الاسم
+                                </th>
+                                <th class="whitespace-nowrap">
+                                    الادارة
+                                </th>
+                
+
+                                <th class="whitespace-nowrap w-10">الخيارات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="">
+
+
+                                    <td class="whitespace-nowrap">
+                                        <a href="" class="font-medium whitespace-nowrap">@Html.DisplayFor(modelItem => item.emp_arnm) </a>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5"> @Html.DisplayFor(modelItem => item.emp_code) </div>
+                                    </td>
+
+                                    <td class="whitespace-nowrap">
+                                        <a href="" class="font-medium whitespace-nowrap">@Html.DisplayFor(modelItem => item.Branchs.Sections.Departments.DepartmentName) </a>
+                                        <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5"> @Html.DisplayFor(modelItem => item.Branchs.BranchsName) </div>
+                                    </td>
+                                    <td class="whitespace-nowrap">
+
+                                        <div class="d-flex justify-content-end flex-shrink-0">
+
+                                            @{
+                                                if (item.remarks == "888")
+                                                {
+
+                                                    <a href="@Url.Action("Add_User", "Account" , new { id=item.Id, permission ="Organizational_Manager"})" class="btn btn-primary btn-fw btn-sm"> تعيين كمستخدم</a>
+
+                                                }
+                                                else if (item.remarks == "False")
+                                                {
+
+                                                    <a class="btn btn-primary btn-fw btn-sm" style="margin-left: 5px;" href="@Url.Action("Details", "Account" , new { id=item.Id})"> الصلاحيات</a>
+                                                    <a class="btn btn-danger btn-fw btn-sm" href="@Url.Action("Suspend", "Account", new { id = item.Id })"> ايقاف</a>
+
+                                                }
+                                                else if (item.remarks == "True")
+                                                {
+                                                    <a class="btn btn-primary btn-fw btn-sm" style="margin-left: 5px;" href="@Url.Action("Details", "Account" , new { id=item.Id})"> الصلاحيات</a>
+
+                                                    <a class="btn btn-success btn-fw btn-sm" href="@Url.Action("UnSuspend", "Account", new { id = item.Id })"> اعتماد</a>
+
+                                                }
+                                            }
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-
-
-
-
 </div>
-@* New *@
+
+
+
 
 
 <script>

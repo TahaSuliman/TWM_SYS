@@ -34,9 +34,15 @@
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="menu__title"> الرئيسية <i class="menu__sub-icon"></i> </div>
                     </a>
+                </li> 
+                <li>
+                    <a href="@Url.Action("Index","Home")" class="menu">
+                        <div class="menu__icon"> <i data-lucide="user-plus"></i> </div>
+                        <div class="menu__title"> الموظفين <i class="menu__sub-icon"></i> </div>
+                    </a>
                 </li>
                 <li>
-                    <a href="#" class="menu">
+                    <a href="@Url.Action("Main","Account")" class="menu">
                         <div class="menu__icon"> <i data-lucide="users"></i> </div>
                         <div class="menu__title"> ادارة المستخدمين <i class="menu__sub-icon"></i> </div>
                     </a>
@@ -48,48 +54,48 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="side-menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("MainDepartments","Organizational_Structure")side-menu-light-dashboard-overview-1.html" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title">قائمة الادارات العامة </div>
                             </a>
                         </li>
                         <li>
-                            <a href="simple-menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Departments","Organizational_Structure")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> قائمة الادارات </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Sections","Organizational_Structure")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> قائمة الاقسام  </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Branchs","Organizational_Structure")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> قائمة الفروع  </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Index","Strategic_Plans")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> الخطط الاستراتيجية </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Strategic_Targets","Strategic_Plans")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> الاهداف الاستراتيجية </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="menu-light-dashboard-overview-1.html" class="menu">
+                            <a href="@Url.Action("Index","Jobs")" class="menu">
                                 <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="menu__title"> المسميات الوظيفية </div>
                             </a>
@@ -255,7 +261,13 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="top-menu">
+                <a href="@Url.Action("Index","Home")" class="top-menu">
+                    <div class="top-menu__icon"> <i data-lucide="user-plus"></i> </div>
+                    <div class="top-menu__title"> الموظفين <i class="top-menu__sub-icon"></i> </div>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Main","Account")" class="top-menu">
                     <div class="top-menu__icon"> <i data-lucide="users"></i> </div>
                     <div class="top-menu__title"> ادارة المستخدمين <i class="top-menu__sub-icon"></i> </div>
                 </a>
@@ -267,48 +279,48 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="side-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("MainDepartments","Organizational_Structure")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title">قائمة الادارات العامة </div>
                         </a>
                     </li>
                     <li>
-                        <a href="simple-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Departments","Organizational_Structure")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> قائمة الادارات </div>
                         </a>
                     </li>
 
                     <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Sections","Organizational_Structure")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> قائمة الاقسام  </div>
                         </a>
                     </li>
-                    
+
                     <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Branchs","Organizational_Structure")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> قائمة الفروع  </div>
                         </a>
                     </li>
-                                      
+
                     <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Index","Strategic_Plans")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> الخطط الاستراتيجية </div>
                         </a>
                     </li>
-                                                          
+
                     <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Strategic_Targets","Strategic_Plans")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> الاهداف الاستراتيجية </div>
                         </a>
                     </li>
-                                                                              
+
                     <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" class="top-menu">
+                        <a href="@Url.Action("Index","Jobs")" class="top-menu">
                             <div class="top-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="top-menu__title"> المسميات الوظيفية </div>
                         </a>

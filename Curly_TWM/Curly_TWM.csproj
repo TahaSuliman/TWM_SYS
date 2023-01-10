@@ -422,6 +422,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\Avatars\noimage.png" />
     <Content Include="Uploads\Documents\13-3-2022-19-13-41TQUV.png" />
     <Content Include="Uploads\Documents\13-3-2022-19-13-50DFNW.png" />
     <Content Include="Uploads\Documents\15-3-2022-10-55-43RAHU.png" />
@@ -460,10 +461,25 @@
     <Content Include="Views\Account\Land.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Main.cshtml" />
+    <Content Include="Views\Organizational_Structure\Branchs.cshtml" />
+    <Content Include="Views\Organizational_Structure\Create.cshtml" />
+    <Content Include="Views\Organizational_Structure\CreateBranchs.cshtml" />
+    <Content Include="Views\Organizational_Structure\CreateDepartments.cshtml" />
+    <Content Include="Views\Organizational_Structure\CreateSections.cshtml" />
+    <Content Include="Views\Organizational_Structure\Departments.cshtml" />
+    <Content Include="Views\Organizational_Structure\MainDepartments.cshtml" />
+    <Content Include="Views\Organizational_Structure\Sections.cshtml" />
+    <Content Include="Views\Strategic_Plans\Create.cshtml" />
+    <Content Include="Views\Strategic_Plans\CreateStrategic_Targets.cshtml" />
+    <Content Include="Views\Strategic_Plans\Index.cshtml" />
+    <Content Include="Views\Strategic_Plans\Strategic_Targets.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\CreateDoc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\Avatars\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
