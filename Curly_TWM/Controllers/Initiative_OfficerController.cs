@@ -14,7 +14,7 @@ namespace Curly_TWM.Controllers
     public class Initiative_OfficerController : Controller
     {
         private UnitOfWork unitfw = null;
-        //private IGenericRepository<qualifications> unitfw33 = null;
+
         //-----------------------------------
         public Initiative_OfficerController()
         {

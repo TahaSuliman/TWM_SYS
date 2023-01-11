@@ -1,0 +1,195 @@
+﻿@model Curly_TWM.Domain.Entities.OperationalIndicators
+
+@{
+    ViewBag.Title = "CreateIndicator";
+    Layout = "~/Views/Initiative_Officer/_LayoutInitiativeOfficer.cshtml";
+}
+
+<style>
+    textarea {
+        /*TextAreaFor*/
+        display: block;
+        width: 100%;
+        /*height: calc(3.5em + .75rem + 2px);*/
+        padding: .375rem .75rem;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 0px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        background-color: #f5f8fa;
+        color: #5e6278;
+        transition: color .2s ease,background-color .2s ease;
+    }
+</style>
+<!--begin::Header-->
+<div id="kt_header" class="header">
+    <!--begin::Container-->
+    <div class="container d-flex align-items-center justify-content-between" id="kt_header_container" style=" direction: rtl;">
+        <!--begin::Page title-->
+        <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
+            <!--begin::Heading-->
+            <h1 class="d-flex flex-column text-dark fw-bolder my-0 fs-1">@ViewBag.ActionName</h1>
+            <!--end::Heading-->
+            <!--begin::Breadcrumb-->
+            <ul class="breadcrumb breadcrumb-dot fw-bold fs-base my-1">
+                <li class="breadcrumb-item text-muted">
+                    <span class="text-muted">لاكمال العملية قم بادخال البيانات الرئيسية</span>
+                </li>
+
+            </ul>
+            <!--end::Breadcrumb-->
+        </div>
+        <!--end::Page title=-->
+        <!--begin::Wrapper-->
+        <div class="d-flex d-lg-none align-items-center ms-n2 me-2">
+            <!--begin::Aside mobile toggle-->
+            <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
+                <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
+                <span class="svg-icon svg-icon-1 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black"></path>
+                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black"></path>
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->
+            </div>
+            <!--end::Aside mobile toggle-->
+            <!--begin::Logo-->
+            <a href="../../demo3/dist/index.html" class="d-flex align-items-center">
+                <img alt="Logo" src="assets/media/logos/logo-demo3-default.svg" class="h-20px">
+            </a>
+            <!--end::Logo-->
+        </div>
+        <!--end::Wrapper-->
+        <!--begin::Topbar-->
+        <div class="d-flex align-items-center flex-shrink-0">
+            <!--begin::Search-->
+            <div id="kt_header_search" class="d-flex align-items-center w-125px w-md-150px w-lg-225px" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-menu-trigger="auto" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-end" data-kt-search="true">
+
+
+            </div>
+
+
+        </div>
+        <!--end::Topbar-->
+    </div>
+
+
+    <!--end::Container-->
+</div>
+
+<!--end::Header-->
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Container-->
+    <div class="container-xxl" id="kt_content_container">
+
+        <!--begin::Tables Widget 9-->
+        <div class="card mb-5 mb-xl-10">
+
+            <div class="card-body py-3">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="separator separator-dashed my-10"></div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="mb-0">
+
+                        <div class="row gx-10 mb-5" style="direction:rtl">
+                            <div class="col-lg-12">
+
+
+                                @Html.LabelFor(model => model.Initiativeid, htmlAttributes: new { @class = "form-label fs-6 fw-bolder text-gray-700 mb-3" })
+                                <div class="mb-5">
+                                    <h3>
+                                        @ViewBag.InitiativeName
+                                    </h3>
+                                    @Html.ValidationMessageFor(model => model.Initiativeid, "", new { @class = "text-danger" })
+                                </div>
+
+
+                                @Html.LabelFor(model => model.Indicator, htmlAttributes: new { @class = "form-label fs-6 fw-bolder text-gray-700 mb-3" })
+                                <div class="mb-5">
+                                    @Html.EditorFor(model => model.Indicator, new { htmlAttributes = new { @class = "form-control form-control-solid cou" } })
+                                    @Html.ValidationMessageFor(model => model.Indicator, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="row mb-5">
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="fs-5 fw-bold mb-2"> @Html.LabelFor(model => model.Indicator_Target, htmlAttributes: new { @class = "" })</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        @Html.EditorFor(model => model.Indicator_Target, new { htmlAttributes = new { @class = "form-control form-control-solid" } })
+                                        <div class="fv-plugins-message-container invalid-feedback">
+                                            @Html.ValidationMessageFor(model => model.Indicator_Target, "", new { @class = "" })                                        <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 fv-row fv-plugins-icon-container">
+                                        <!--end::Label-->
+                                        <label class="fs-5 fw-bold mb-2">@Html.LabelFor(model => model.Indicator_Result, htmlAttributes: new { @class = "" })</label>
+                                        <!--end::Label-->
+                                        <!--end::Input-->
+                                        @Html.EditorFor(model => model.Indicator_Result, new { htmlAttributes = new { @class = "form-control form-control-solid" } })
+                                        <!--end::Input-->
+                                        <div class="fv-plugins-message-container invalid-feedback">
+                                            @Html.ValidationMessageFor(model => model.Indicator_Result, "", new { @class = "" })
+                                        </div>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+
+                                @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "form-label fs-6 fw-bolder text-gray-700 mb-3" })
+                                <div class="mb-5">
+                                    @Html.TextAreaFor(model => model.remarks, 4, 100, new { htmlAttributes = new { @class = "form-control form-control-solid" } })
+                                    @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="display:none">
+                                    @Html.TextBoxFor(model => model.Initiativeid, new { @class = "cou", @Value = ViewBag.Initiativeid })
+                                </span>
+                                <br />
+                                <div class="separator separator-dashed my-10"></div>
+
+                                <div class="mb-0">
+                                    <div class="row mb-5">
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary w-100">
+                                                حفظ
+                                            </button>
+                                        </div>
+                                        <div class="col">
+                                            <a href="@Url.Action("OperationalIndicators", "Initiative_Officer" ,new {iId=ViewBag.Initiativeid })" class="btn btn-light btn-active-light-primary w-100">عودة للقائمة</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                }
+
+            </div>
+            <!--begin::Body-->
+        </div>
+        <!--end::Tables Widget 9-->
+
+    </div>
+    <!--end::Container-->
+</div>
+
+
+

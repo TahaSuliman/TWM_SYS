@@ -477,6 +477,24 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\CreateDoc.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreateIndicator.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreateInitiatives.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreatePartner.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreateRisk.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreateTask.cshtml" />
+    <Content Include="Views\Initiative_Officer\CreateTeams.cshtml" />
+    <Content Include="Views\Initiative_Officer\DetailsInitiatives.cshtml" />
+    <Content Include="Views\Initiative_Officer\EditInitiatives.cshtml" />
+    <Content Include="Views\Initiative_Officer\ExecutePlan.cshtml" />
+    <Content Include="Views\Initiative_Officer\Initiatives.cshtml" />
+    <Content Include="Views\Initiative_Officer\InitiativesUploas.cshtml" />
+    <Content Include="Views\Initiative_Officer\Main.cshtml" />
+    <Content Include="Views\Initiative_Officer\MemberDetails.cshtml" />
+    <Content Include="Views\Initiative_Officer\OperationalIndicators.cshtml" />
+    <Content Include="Views\Initiative_Officer\Partners.cshtml" />
+    <Content Include="Views\Initiative_Officer\RiskList.cshtml" />
+    <Content Include="Views\Initiative_Officer\Teams.cshtml" />
+    <Content Include="Views\Initiative_Officer\_LayoutInitiativeOfficer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
