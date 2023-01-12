@@ -19,9 +19,9 @@
     العدد @ViewBag.cou
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md ml-2">
+            <a href="@Url.Action("CreateInitiatives","Initiative_Officer")" class="btn btn-primary shadow-md ml-2">
                 اضافة جديد
-            </button>
+            </a>
 
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
@@ -36,11 +36,14 @@
             <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3">
                 <div class="box">
                     <div class="p-5">
- 
+
                         <div class="text-slate-600 dark:text-slate-500 mt-5">
 
-                             
-                            <div class="font-extrabold mb-5" >@i.InitiativeName</div>
+                            
+ 
+                           
+
+                            <div class="font-extrabold mb-5">@i.InitiativeName</div>
                             <hr class=" mb-5">
                             <div class="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="calendar" data-lucide="calendar" class="lucide lucide-calendar w-4 h-4 ml-2">
@@ -64,18 +67,45 @@
 
                         <div class="preview">
 
-                            <button class="btn btn-pending mr-1 mb-2 tooltip" title="تعديل البيانات" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-5 h-5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> </button>
+                            <a href=" @Url.Action("EditInitiatives", "Initiative_Officer", new { id = i.Id })" class="btn btn-pending mr-1 mb-2 tooltip" title="تعديل البيانات" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-5 h-5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> </a>
 
-                            <button class="btn btn-secondary mr-1 mb-2 tooltip" title="اضافة وثائق المبادرة" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="link" data-lucide="link" class="lucide lucide-link w-5 h-5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> </button>
+                            <a href="@Url.Action("InitiativesUploas", "Initiative_Officer", new { id = i.Id })" class="btn btn-secondary mr-1 mb-2 tooltip" title="اضافة وثائق المبادرة" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="link" data-lucide="link" class="lucide lucide-link w-5 h-5"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> </a>
+
+                            <a href="@Url.Action("DetailsInitiatives", "Initiative_Officer", new { id = i.Id })" class="btn btn-success mr-1 mb-2 tooltip" title="عرض التفاصيل" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file-text" data-lucide="file-text" class="lucide lucide-file-text w-5 h-5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> </a>
 
                             <div class="dropdown mr-1 mb-2" style="position: relative; display: contents;">
-                                <button class="dropdown-toggle btn btn-primary tooltip" title="خيارات المبادرة"  data-theme="light" aria-expanded="false" data-tw-toggle="dropdown">
+                                <button class="dropdown-toggle btn btn-primary tooltip" title="خيارات المبادرة" data-theme="light" aria-expanded="false" data-tw-toggle="dropdown">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="align-justify" data-lucide="align-justify" class="lucide lucide-align-justify w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
                                 </button>
                                 <div class="dropdown-menu w-40" id="_7icp3nw31" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 38px, 0px);">
+
+
+
+
+
+
+
+
                                     <ul class="dropdown-content">
-                                        <li> <a href="" class="dropdown-item">New Dropdown</a> </li>
-                                        <li> <a href="" class="dropdown-item">Delete Dropdown</a> </li>
+                                        <li>
+                                            <a href="@Url.Action("CreateTeams","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">اضافة عضو للفريق</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Teams","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">قائمة الاعضاء</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ExecutePlan","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">ادارة مهام الفريق</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Partners","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">قائمة الشركاء </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("RiskList","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">اضافة المخاطر </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("OperationalIndicators","Initiative_Officer" ,new { iId=i.Id})" class="dropdown-item">المؤشرات التشغيلية</a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -83,7 +113,7 @@
 
 
                         </div>
-                 
+
 
                     </div>
                 </div>
