@@ -26,11 +26,34 @@ namespace Curly_TWM.Controllers
         private TWMDB db = new TWMDB();
         public ActionResult Index()
         {
-            Session["Style"] = "light";
+            if (Session["Style"] == null)
+            {
+                Session["Style"] = "light";  // dark  light
+            }
+
             //just For you ! Again
             // initial style session ...
             //just For you !
             return View(unitfw.emp_main.Find(c =>(c.emp_arnm !="super")).ToList());
+        }
+
+        [HttpGet]
+        public JsonResult ToggleClass()
+        {
+
+            string str = (string)Session["Style"];
+            if (str == "light")
+            {
+                Session["Style"] = "dark";
+                return Json("light", JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                Session["Style"] = "light";
+                return Json("dark", JsonRequestBehavior.AllowGet);
+
+            }
         }
         // GET: HR/Create
         public ActionResult Create()
