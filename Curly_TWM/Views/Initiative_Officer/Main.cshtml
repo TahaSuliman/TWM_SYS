@@ -4,556 +4,445 @@
     ViewBag.Title = "Main";
     Layout = "~/Views/Initiative_Officer/_LayoutInitiativeOfficer.cshtml";
 }
-
-<script>
-    "use strict";
-
-    //1
-
-    var KTProjectList = {
-
-        init: function () {
-            !function () {
-
-                //MyData
-    var t =@ViewBag.InitsCou;
-    var p =@ViewBag.InitsPlanCou ;
-    var e =@ViewBag.InitsRunCou;
-    var d =@ViewBag.InitsDoneCou;
-
-                let plan = p / t * 100;
-                let exut = e / t * 100;
-                let donee = d / t * 100;
-
-                var t = document.getElementById("kt_project_list_chart");
-                if (t) {
-                    var e = t.getContext("2d");
-                    new Chart(e, {
-                        type: "doughnut",
-                        data: {
-                            datasets: [{
-                                data: [Math.round(exut), Math.round(donee), Math.round(plan) ],
-                                backgroundColor: ["#00A3FF", "#50CD89", "#E4E6EF"]
-                            }],
-                            labels: ["قيد التنفيذ", "تم الانجاز", "قيد التخطيط"]
-                        },
-                        options: {
-                            chart: { fontFamily: "inherit" },
-                            cutout: "75%",
-                            cutoutPercentage: 65,
-                            responsive: !0,
-                            maintainAspectRatio: !1,
-                            title: { display: !1 },
-                            animation: { animateScale: !0, animateRotate: !0 },
-                            tooltips: {
-                                enabled: !0,
-                                intersect: !1,
-                                mode: "nearest",
-                                bodySpacing: 5,
-                                yPadding: 10,
-                                xPadding: 10,
-                                caretPadding: 0,
-                                displayColors: !1,
-                                backgroundColor: "#20D489",
-                                titleFontColor: "#ffffff",
-                                cornerRadius: 4,
-                                footerSpacing: 0,
-                                titleSpacing: 0
-                            }, plugins: { legend: { display: !1 } }
-                        }
-                    })
-                }
-            }()
-        }
-    };
+<script src="~/Content/dist/charts/apexcharts.js"></script>
 
 
-    KTUtil.onDOMContentLoaded((function () {
-        KTProjectList.init()
-    }));
-
-
-</script>
-
-<script>
-    "use strict";
-    //2
-    var taskschart = {
-
-        init: function () {
-            !function () {
-
-                //MyData
-                var t =@ViewBag.taskCou;
-                var n =@ViewBag.NtaskCou;
-                var e =@ViewBag.EtaskCou;
-                var d =@ViewBag.DtaskCou;
-                var o =@ViewBag.OtaskCou;
-
-                let plan = n / t * 100;
-                let exut = e / t * 100;
-                let donee = d / t * 100;
-                let outa = o / t * 100;
-
-                var t = document.getElementById("taskscript_chart");
-                if (t) {
-                    var e = t.getContext("2d");
-                    new Chart(e, {
-                        type: "doughnut",
-                        data: {
-                            datasets: [{
-                                data: [Math.round(exut), Math.round(donee), Math.round(plan), Math.round(outa)],
-                                backgroundColor: ["#00A3FF", "#50CD89", "#E4E6EF", "red"]
-                            }],
-                            labels: ["قيد التنفيذ", "تم التنفيذ", "جديد", "خارج الوقت"]
-                        },
-                        options: {
-                            chart: { fontFamily: "inherit" },
-                            cutout: "75%",
-                            cutoutPercentage: 65,
-                            responsive: !0,
-                            maintainAspectRatio: !1,
-                            title: { display: !1 },
-                            animation: { animateScale: !0, animateRotate: !0 },
-                            tooltips: {
-                                enabled: !0,
-                                intersect: !1,
-                                mode: "nearest",
-                                bodySpacing: 7,
-                                yPadding: 10,
-                                xPadding: 10,
-                                caretPadding: 0,
-                                displayColors: !1,
-                                backgroundColor: "#20D489",
-                                titleFontColor: "#ffffff",
-                                cornerRadius: 4,
-                                footerSpacing: 0,
-                                titleSpacing: 0
-                            }, plugins: { legend: { display: !1 } }
-                        }
-                    })
-                }
-            }()
-        }
-    };
-    KTUtil.onDOMContentLoaded((function () {
-        taskschart.init()
+<style>
+    .apexyellow {
+        background-color: #fee4b2
     }
-    ));
-</script>
-<!--begin::Header-->
-<div id="kt_header" class="header">
-    <!--begin::Container-->
-    <div class="container d-flex align-items-center justify-content-between" id="kt_header_container">
-        <!--begin::Page title-->
-        <!--end::Page title=-->
-        <!--begin::Wrapper-->
-        <div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-            <!--begin::Aside mobile toggle-->
-            <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
-                <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
-                <span class="svg-icon svg-icon-1 mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
-                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
-                    </svg>
-                </span>
-                <!--end::Svg Icon-->
-            </div>
-            <!--end::Aside mobile toggle-->
-            <!--begin::Logo-->
-            <a href="#">
-                <img src="~/Content/assets/media/logos/logosmall.png"  class="h-20px" alt="Alternate Text" />
-            </a>
-            <!--end::Logo-->
-        </div>
-        <!--end::Wrapper-->
-        <!--begin::Topbar-->
-        <div class="d-flex align-items-center flex-shrink-0">
-            <!--begin::Search-->
-            <div id="kt_header_search" class="d-flex align-items-center w-125px w-md-150px w-lg-225px" data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter" data-kt-search-layout="menu" data-kt-menu-trigger="auto" data-kt-menu-permanent="true" data-kt-menu-placement="bottom-end">
-                <!--begin::Form-->
-                <form data-kt-search-element="form" class="w-100 position-relative" autocomplete="off">
-                    <!--begin::Hidden input(Added to disable form autocomplete)-->
-                    <input type="hidden" />
-                    <!--end::Hidden input-->
-                    <!--begin::Icon-->
-                    <!--begin::Svg Icon | path: icons/duotune/general/gen004.svg-->
-                    <span class="svg-icon svg-icon-2 svg-icon-gray-700 position-absolute top-50 translate-middle-y ms-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="black" />
-                            <path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                    <!--end::Icon-->
-                    <!--begin::Input-->
-                    <input type="text" class="form-control bg-transparent ps-13 fs-7 h-40px" name="search" value="" placeholder="Quick Search" data-kt-search-element="input" />
-                    <!--end::Input-->
-                    <!--begin::Spinner-->
-                    <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
-                        <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
-                    </span>
-                    <!--end::Spinner-->
-                    <!--begin::Reset-->
-                    <span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-4" data-kt-search-element="clear">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2 svg-icon-lg-1 me-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <!--end::Reset-->
-                </form>
-                <!--end::Form-->
-                <!--begin::Menu-->
-                <!--end::Menu-->
-            </div>
-            <!--end::Search-->
-            <!--begin::Activities-->
-            <div class="d-flex align-items-center ms-3 ms-lg-4">
-                <!--begin::Drawer toggle-->
-                <div class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary w-40px h-40px" id="kt_activities_toggle">
-                    <!--begin::Svg Icon | path: icons/duotune/general/gen007.svg-->
-                    <span class="svg-icon svg-icon-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black" />
-                            <path d="M19 15V18C19 18.6 18.6 19 18 19H6C5.4 19 5 18.6 5 18V15C6.1 15 7 14.1 7 13V10C7 7.6 8.7 5.6 11 5.1V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V5.1C15.3 5.6 17 7.6 17 10V13C17 14.1 17.9 15 19 15ZM11 10C11 9.4 11.4 9 12 9C12.6 9 13 8.6 13 8C13 7.4 12.6 7 12 7C10.3 7 9 8.3 9 10C9 10.6 9.4 11 10 11C10.6 11 11 10.6 11 10Z" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                </div>
-                <!--end::Drawer toggle-->
-            </div>
-            <!--end::Activities-->
-            <!--begin::Chat-->
-            <div class="d-flex d-none align-items-center ms-3 ms-lg-4">
-                <!--begin::Drawer wrapper-->
-                <div class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary position-relative w-40px h-40px" id="kt_drawer_chat_toggle">
-                    <!--begin::Svg Icon | path: icons/duotune/communication/com003.svg-->
-                    <span class="svg-icon svg-icon-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path opacity="0.3" d="M2 4V16C2 16.6 2.4 17 3 17H13L16.6 20.6C17.1 21.1 18 20.8 18 20V17H21C21.6 17 22 16.6 22 16V4C22 3.4 21.6 3 21 3H3C2.4 3 2 3.4 2 4Z" fill="black" />
-                            <path d="M18 9H6C5.4 9 5 8.6 5 8C5 7.4 5.4 7 6 7H18C18.6 7 19 7.4 19 8C19 8.6 18.6 9 18 9ZM16 12C16 11.4 15.6 11 15 11H6C5.4 11 5 11.4 5 12C5 12.6 5.4 13 6 13H15C15.6 13 16 12.6 16 12Z" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                    <!--begin::Bullet-->
-                    <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
-                    <!--end::Bullet-->
-                </div>
-                <!--end::Drawer wrapper-->
-            </div>
-            <!--end::Chat-->
-            <!--begin::Sidebar Toggler-->
-            <button class="btn btn-icon btn-active-icon-primary d-xxl-none ms-2 me-n2" id="kt_sidebar_toggler">
-                <!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->
-                <span class="svg-icon svg-icon-2x">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path opacity="0.3" d="M22.1 11.5V12.6C22.1 13.2 21.7 13.6 21.2 13.7L19.9 13.9C19.7 14.7 19.4 15.5 18.9 16.2L19.7 17.2999C20 17.6999 20 18.3999 19.6 18.7999L18.8 19.6C18.4 20 17.8 20 17.3 19.7L16.2 18.9C15.5 19.3 14.7 19.7 13.9 19.9L13.7 21.2C13.6 21.7 13.1 22.1 12.6 22.1H11.5C10.9 22.1 10.5 21.7 10.4 21.2L10.2 19.9C9.4 19.7 8.6 19.4 7.9 18.9L6.8 19.7C6.4 20 5.7 20 5.3 19.6L4.5 18.7999C4.1 18.3999 4.1 17.7999 4.4 17.2999L5.2 16.2C4.8 15.5 4.4 14.7 4.2 13.9L2.9 13.7C2.4 13.6 2 13.1 2 12.6V11.5C2 10.9 2.4 10.5 2.9 10.4L4.2 10.2C4.4 9.39995 4.7 8.60002 5.2 7.90002L4.4 6.79993C4.1 6.39993 4.1 5.69993 4.5 5.29993L5.3 4.5C5.7 4.1 6.3 4.10002 6.8 4.40002L7.9 5.19995C8.6 4.79995 9.4 4.39995 10.2 4.19995L10.4 2.90002C10.5 2.40002 11 2 11.5 2H12.6C13.2 2 13.6 2.40002 13.7 2.90002L13.9 4.19995C14.7 4.39995 15.5 4.69995 16.2 5.19995L17.3 4.40002C17.7 4.10002 18.4 4.1 18.8 4.5L19.6 5.29993C20 5.69993 20 6.29993 19.7 6.79993L18.9 7.90002C19.3 8.60002 19.7 9.39995 19.9 10.2L21.2 10.4C21.7 10.5 22.1 11 22.1 11.5ZM12.1 8.59998C10.2 8.59998 8.6 10.2 8.6 12.1C8.6 14 10.2 15.6 12.1 15.6C14 15.6 15.6 14 15.6 12.1C15.6 10.2 14 8.59998 12.1 8.59998Z" fill="black" />
-                        <path d="M17.1 12.1C17.1 14.9 14.9 17.1 12.1 17.1C9.30001 17.1 7.10001 14.9 7.10001 12.1C7.10001 9.29998 9.30001 7.09998 12.1 7.09998C14.9 7.09998 17.1 9.29998 17.1 12.1ZM12.1 10.1C11 10.1 10.1 11 10.1 12.1C10.1 13.2 11 14.1 12.1 14.1C13.2 14.1 14.1 13.2 14.1 12.1C14.1 11 13.2 10.1 12.1 10.1Z" fill="black" />
-                    </svg>
-                </span>
-                <!--end::Svg Icon-->
-            </button>
-            <!--end::Sidebar Toggler-->
-        </div>
-        <!--end::Topbar-->
 
-        <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-            <!--begin::Heading-->
-            <h1 class="d-flex flex-column text-dark fw-bolder my-0 fs-1">
-                @ViewBag.ActionName
-                <small class="text-muted fs-6 fw-bold ms-1 pt-1"></small>
-            </h1>
-            <!--end::Heading-->
-        </div>
-    </div>
-    <!--end::Container-->
-</div>
-<!--end::Header-->
-<!--begin::Content-->
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Container-->
-    <div class="container-xxl" id="kt_content_container">
-        <!--begin::Row-->
+    .apexgraeen {
+        background-color: #00d8b6
+    }
 
-        <div class="row g-6 g-xl-9">
+    .apexred {
+        background-color: #ff1752
+    }
+
+    .apexblue {
+        background-color: #0086ff
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:first-child {
+        border-top-left-radius: 0rem !important;
+        border-top-right-radius: 0.375rem;
+        border-bottom-left-radius: 0rem !important;
+        border-bottom-right-radius: 0.375rem;
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:last-child {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0rem !important;
+        border-bottom-right-radius: 0rem !important;
+        border-bottom-left-radius: 0.375rem;
+    }
+</style>
 
 
-            <div class="col-lg-6">
-                <!--begin::Card-->
-                <div class="card h-100">
-                    <!--begin::Card body-->
-                    <div class="card-body p-9">
-                        <!--begin::Heading-->
-                        <div class="fs-2hx fw-bolder cou" style="direction:rtl;text-align:right">@ViewBag.InitsCou</div>
-                        <div class="fs-4 fw-bold text-gray-400 mb-7" style="direction:rtl;text-align:right">اجمالي المبادرات و المشاريع</div>
-                        <!--end::Heading-->
-                        <!--begin::Wrapper-->
-                        <div class="d-flex flex-wrap">
-                            <!--begin::Chart-->
-                            <div class="d-flex flex-center h-100px w-100px me-9 mb-5">
-                                <canvas id="kt_project_list_chart" width="100" height="100" style="display: block; box-sizing: border-box; height: 100px; width: 100px;"></canvas>
-                            </div>
-                            <!--end::Chart-->
-                            <!--begin::Labels-->
-                            <div class="d-flex flex-column justify-content-center flex-row-fluid pe-11 mb-5">
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center mb-3">
-                                    <div class="bullet bg-primary me-3"></div>
-                                    <div class="text-gray-400">قيد التنفيذ</div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.InitsRunCou</div>
-                                </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center mb-3">
-                                    <div class="bullet bg-success me-3"></div>
-                                    <div class="text-gray-400">تم الانجاز</div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.InitsDoneCou</div>
-                                </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center">
-                                    <div class="bullet bg-gray-300 me-3"></div>
-                                    <div class="text-gray-400">قيد التخطيط</div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.InitsPlanCou</div>
-                                </div>
-                                <!--end::Label-->
-                            </div>
-                            <!--end::Labels-->
+<div class="content" style="direction:rtl;text-align:right">
+    <h2 class="intro-y text-lg font-medium mt-10">
+        @ViewBag.ActionName
+    </h2>
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+
+        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
+            <div class="intro-y box col-span-12 lg:col-span-4" style="direction:rtl">
+
+                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <h2 class="font-medium text-base">
+                        اجمالي المبادرات و المشاريع
+                    </h2>
+                    <div class="dropdown ml-auto sm:hidden">
+                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                        <div class="dropdown-menu w-40">
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a href="javascript:;" class="dropdown-item">
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <!--end::Wrapper-->
                     </div>
-                    <!--end::Card body-->
-                </div>
-                <!--end::Card-->
-            </div>
-            <div class="col-lg-6">
-                <!--begin::Summary-->
-                <div class="card card-flush h-lg-100">
-                    <!--begin::Card header-->
-                    <div class="card-header mt-6">
-                        <!--begin::Card title-->
-                        <div class="card-title flex-column">
-                            <h3 class="fw-bolder mb-1">ملخص المهام</h3>
-                            <div class="fs-6 fw-bold text-gray-400"></div>
-                        </div>
-                        <!--end::Card title-->
-                        <!--begin::Card toolbar-->
-                        <div class="card-toolbar">
 
-                        </div>
-                        <!--end::Card toolbar-->
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body p-9 pt-5">
-                        <!--begin::Wrapper-->
-                        <div class="d-flex flex-wrap">
-                            <!--begin::Chart-->
-                            <div class="position-relative d-flex flex-center h-175px w-175px me-15 mb-7">
-                                <div class="position-absolute translate-middle start-50 top-50 d-flex flex-column flex-center">
-                                    <span class="fs-2qx fw-bolder cou">
-                                        @ViewBag.taskCou
-                                    </span>
-                                    <span class="fs-6 fw-bold text-gray-400">اجمالي المهام</span>
+                </div>
+                <div class="p-5">
+                    <div class="tab-content">
+                        <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
+                            <div class="relative">
+                                <div class="h-[208px]">
+
+                                    <div id="chart2"> </div>
+
                                 </div>
-                                <canvas id="taskscript_chart" width="175" height="175" style="display: block; box-sizing: border-box; height: 175px; width: 175px;"></canvas>
                             </div>
-                            <!--end::Chart-->
-                            <!--begin::Labels-->
-                            <div class="d-flex flex-column justify-content-center flex-row-fluid pe-11 mb-5">
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center mb-3">
-                                    <div class="bullet bg-primary me-3"></div>
-                                    <div class="text-gray-400">
+                            <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                                    <span class="truncate">
                                         قيد التنفيذ
-                                    </div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.EtaskCou</div>
+                                    </span>
+
                                 </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center mb-3">
-                                    <div class="bullet bg-success me-3"></div>
-                                    <div class="text-gray-400">تم الانجاز</div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.DtaskCou</div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        تم الانجاز
+                                    </span>
+
                                 </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center mb-3">
-                                    <div class="bullet bg-danger me-3"></div>
-                                    <div class="text-gray-400">خارج الوقت</div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.OtaskCou</div>
+
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        قيد التخطيط
+                                    </span>
+
                                 </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fs-6 fw-bold align-items-center">
-                                    <div class="bullet bg-gray-300 me-3"></div>
-                                    <div class="text-gray-400">
-                                        جديد
-                                    </div>
-                                    <div class="ms-auto fw-bolder text-gray-700 cou">@ViewBag.NtaskCou</div>
+
+                                
+                                <div class="flex items-center mt-4">
+
+                                    <span class="truncate">
+                                        <br />
+                                    </span>
+
                                 </div>
-                                <!--end::Label-->
+
+
+
+
                             </div>
-                            <!--end::Labels-->
                         </div>
-                        <!--end::Wrapper-->
-                        <!--begin::Notice-->
-                        <!--end::Notice-->
                     </div>
-                    <!--end::Card body-->
                 </div>
-                <!--end::Summary-->
             </div>
 
+
         </div>
+        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
+            <div class="intro-y box col-span-12 lg:col-span-4" style="direction:rtl">
 
-        <div class="d-flex flex-wrap flex-stack my-5" style="direction:rtl;text-align:right">
-            <!--begin::Heading-->
-            <h2 class="fs-2 fw-bold my-2">
-                اعضاء الفريق
-                <span class="fs-6 text-gray-400 ms-1">مع المهام</span>
-            </h2>
-            <!--end::Heading-->
-            <!--begin::Controls-->
-            <!--end::Controls-->
-        </div>
-        <!--end::Row-->
-        <!--begin::Tables Widget 9-->
-        <div class="card mb-5 mb-xl-10">
-            <!--begin::Header-->
-            <div class="card-header border-0 pt-5">
-                <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bolder fs-3 mb-1">قائمة فرق العمل</span>
-                    <span class="text-muted mt-1 fw-bold fs-7 cou">@Model.Count()</span>
-                </h3>
-
-            </div>
-            <!--end::Header-->
-            <!--begin::Body-->
-            <div class="card-body pt-0">
-                <!--begin::Table container-->
-                <div class="table-responsive">
-                    @*<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" style="direction:rtl;text-align:right">*@
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="example" style="direction:rtl;text-align:right">
-                        <!--begin::Table head-->
-                        <thead>
-                            <tr class="fw-bolder text-muted">
-
-                                <th class="min-w-150px">عضو الفريق - المبادرة</th>
-
-                                <th class="min-w-140px">الادارة</th>
-
-                                <th class="min-w-120px">عدد المهام</th>
-
-                                <th class="min-w-100px" style="text-align:left">الخيارات</th>
-                            </tr>
-                        </thead>
-                        <!--end::Table head-->
-                        <!--begin::Table body-->
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-45px me-5">
-                                                @*<img src="assets/media/avatars/150-11.jpg" alt="" />*@
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">  @Html.DisplayFor(modelItem => item.emp_main.emp_arnm) </a>
-                                                <span class="text-muted fw-bold text-muted d-block fs-7"> @Html.DisplayFor(modelItem => item.Initiatives.InitiativeName)</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">@Html.DisplayFor(modelItem => item.emp_main.Branchs.Sections.Departments.DepartmentName)</a>
-                                        <span class="text-muted fw-bold text-muted d-block fs-7">@Html.DisplayFor(modelItem => item.emp_main.Branchs.BranchsName)</span>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6 "></a>
-                                        <span class="text-muted fw-bold text-muted d-block fs-7 cou"> @Html.DisplayFor(modelItem => item.remarks)</span>
-                                    </td>
-                                    @*<td class="text-end">
-                                            <div class="d-flex flex-column w-100 me-2">
-                                                <div class="d-flex flex-stack mb-2">
-                                                    <span class="text-muted me-2 fs-7 fw-bold cou">
-                                                       50%
-                                                    </span>
-                                                </div>
-                                                <div class="progress h-6px w-100">
-                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </div>
-                                        </td>*@
-                                    <td>
-                                        <div class="d-flex justify-content-end flex-shrink-0">
-                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
-                                                <span class="svg-icon svg-icon-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="black" />
-                                                        <path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                                <span class="svg-icon svg-icon-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
-                                                        <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-                                                <span class="svg-icon svg-icon-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
-                                                        <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
-                                                        <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                        <!--end::Table body-->
-                    </table>
-
-
+                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <h2 class="font-medium text-base">
+                        نسبة تنفيذ المهام
+                    </h2>
+                    <div class="dropdown ml-auto sm:hidden">
+                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                        <div class="dropdown-menu w-40">
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a href="javascript:;" class="dropdown-item">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
-                <!--end::Table container-->
+                <div class="p-5">
+                    <div class="tab-content">
+                        <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
+                            <div class="relative">
+                                <div class="h-[208px]">
+
+                                    <div id="chart1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                                    <span class="truncate">
+                                        قيد التنفيذ
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        تم الانجاز
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexred rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        خارج الوقت
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        جديد
+                                    </span>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--begin::Body-->
+
+
+
         </div>
-        <!--end::Tables Widget 9-->
 
 
 
-        @*<div class="card card-bordered">
-            <div class="card-body">
-                <div id="chartdiv" style=" width: 100%; height: 500px;"></div>
-            </div>
-        </div>*@
     </div>
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 md:col-span-12 lg:col-span-12 xl:col-span-12">
+            اعضاء الفريق
+            @Model.Count()
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+
+                        <th class="whitespace-nowrap">
+                            عضو الفريق - المبادرة
+                        </th>
+                        <th class="whitespace-nowrap">
+                            الادارة
+                        </th>
+
+                        <th class="whitespace-nowrap">
+                            عدد المهام
+                        </th>
+                        <th class="whitespace-nowrap">
+                            الخيارات
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+                                <a href="" class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.emp_main.emp_arnm)
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.Initiatives.InitiativeName)
+                                </div>
+                            </td>
+                            <td>
+                                <a href="" class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.emp_main.Branchs.Sections.Departments.DepartmentName)
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.emp_main.Branchs.BranchsName)
+                                </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.remarks)
+                            </td>
+                            <td>
+
+                                <div class="preview">
+
+                                    <a href="#" class="btn btn-warning mr-1 mb-2 tooltip" title="تعديل" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-5 h-5"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg> </a>
 
 
+                                    <a href="#" class="btn btn-primary mr-1 mb-2 tooltip" title="التفاصيل" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file-text" data-lucide="file-text" class="lucide lucide-file-text w-5 h-5"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg> </a>
+                                    
+                                    <a href="#" class="btn btn-danger mr-1 mb-2 tooltip" title="حذف" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash" data-lucide="trash" class="lucide lucide-trash w-5 h-5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg> </a>
 
-    <!--end::Container-->
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 </div>
-<!--end::Content-->
 
+
+<script>
+    var options1 = {
+        series: [@ViewBag.EtaskCou,@ViewBag.DtaskCou ,@ViewBag.OtaskCou ,@ViewBag.NtaskCou ],
+        colors: ['#fee4b2', '#00d8b6', '#ff1752', '#0086ff'],
+        chart: {
+
+            type: 'donut',
+            width: 300
+        },
+        dataLabels: {
+            enabled: false
+        },
+        labels: ['قيد التنفيذ', 'تم الانجاز', 'خارج الوقت', 'جديد'],
+        legend: {
+            show: false,
+        },
+        //fill: {
+        //    type: 'gradient',
+        //},
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        tooltip: {
+            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+
+                    w.globals.labels[seriesIndex] +
+                    ": " +
+                    series[seriesIndex] +
+                    "</span>" +
+                    "</div>"
+                );
+            }
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontSize: '22px',
+                            offsetY: -5
+                        },
+                        value: {
+                            show: true,
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: +5,
+                            formatter: function (val) {
+                                return val
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'العدد الاجمالي',
+                            color: '#ffa500',
+                            fontFamily:'myfont4',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce((a, b) => {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    chart1.render();
+</script>
+
+<script>
+
+
+    var options1 = {
+        series: [@ViewBag.InitsRunCou,@ViewBag.InitsDoneCou ,@ViewBag.InitsPlanCou ],
+        colors: ['#fee4b2', '#00d8b6', '#0086ff'],
+        chart: {
+
+            type: 'donut',
+            width: 300
+        },
+        dataLabels: {
+            enabled: false
+        },
+        labels: ['قيد التنفيذ', 'تم الانجاز', 'قيد التخطيط'],
+        legend: {
+            show: false,
+        },
+        //fill: {
+        //    type: 'gradient',
+        //},
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        tooltip: {
+            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+
+                    w.globals.labels[seriesIndex] +
+                    ": " +
+                    series[seriesIndex] +
+                    "</span>" +
+                    "</div>"
+                );
+            }
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontSize: '22px',
+                            offsetY: -5
+                        },
+                        value: {
+                            show: true,
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: +5,
+                            formatter: function (val) {
+                                return val
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'العدد الاجمالي',
+                            color: '#ffa500',
+                            fontFamily:'myfont4',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce((a, b) => {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart2"), options1);
+    chart1.render();
+</script>

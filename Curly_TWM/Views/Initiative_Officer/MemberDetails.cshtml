@@ -11,139 +11,132 @@
 <link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" />
 <script src="~/Content/plugins/sweet-alert2/sweetalert2.js"></script>
 
-<!--begin::Content-->
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Container-->
-    <div class="container-xxl" id="kt_content_container">
-        <div class="d-flex flex-wrap flex-stack my-5">
-            <!--begin::Controls-->
-            <div class="d-flex flex-wrap my-1" data-select2-id="select2-data-123-oh5f">
-                <!--begin::Select wrapper-->
-                <div class="m-0" data-select2-id="select2-data-122-ckv0">
 
-                </div>
-                <!--end::Select wrapper-->
+<style>
+    .apexyellow {
+        background-color: #fee4b2
+    }
+
+    .apexgraeen {
+        background-color: #00d8b6
+    }
+
+    .apexred {
+        background-color: #ff1752
+    }
+
+    .apexblue {
+        background-color: #0086ff
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:first-child {
+        border-top-left-radius: 0rem !important;
+        border-top-right-radius: 0.375rem;
+        border-bottom-left-radius: 0rem !important;
+        border-bottom-right-radius: 0.375rem;
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:last-child {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0rem !important;
+        border-bottom-right-radius: 0rem !important;
+        border-bottom-left-radius: 0.375rem;
+    }
+</style>
+
+<div class="content" style="direction:rtl;text-align:right">
+    <h2 class="intro-y text-lg font-medium mt-10">
+        ادارة مهام الفريق / @ViewBag.InitiativeName
+    </h2>
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+
+        <div class="col-span-12 xl:col-span-12 mt-6">
+            <div class="intro-y flex items-center h-10">
+                <h2 class="text-lg font-medium truncate mr-5">
+                    قائمة المهام
+                </h2>
             </div>
-            <!--end::Controls-->
-            <!--begin::Heading-->
-            <h2 class="fs-2 fw-bold my-2">
-                <span class="fs-6 text-gray-400 ms-1">ادارة مهام الفريق</span><br />
-                @ViewBag.InitiativeName
-            </h2>
-            <!--end::Heading-->
 
-        </div>
-
-        <div class="row gy-5 g-xl-10">
-            <div class="col-xxl-12">
-                <!--begin::Tables Widget 9-->
-                <div class="card card-xl-stretch mb-xl-10">
-
-
-                    <!--begin::Body-->
-                    <div class="card-body py-3" style="direction:rtl">
-
-                        <div class="card card-flush card-p-0 shadow-none bg-transparent mb-5">
-                            <!--begin::Header-->
-                            <div class="card-header align-items-center border-0">
-                                <!--begin::Title-->
-                                <h3 class="card-title fw-bolder text-dark fs-3">قائمة المهام</h3>
-                                <!--end::Title-->
-
+            <div class="mt-5">
+                @foreach (var item in Model)
+                {
+                    <div class="intro-y">
+                        <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                            <div class="ml-4">
+                                <div class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.Teams.emp_main.emp_arnm)
+                                </div>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.TaskName)
+                                </div>
                             </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body py-0">
-                                @foreach (var item in Model)
-                                {
 
-
-                                    <div class="d-flex flex-nowrap align-items-center mb-7">
-                                        <!--begin::Symbol-->
-                                        <div class="symbol symbol-50px me-5">
-                                            <span class="symbol-label sidebar-bg-muted">
-
-                                                @if (item.TaskStat is null)
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "قيد التنفيذ")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "تم التنفيذ")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "خارج الوقت")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-danger">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                            </span>
-                                        </div>
-                                        <!--end::Symbol-->
-                                        <!--begin::Text-->
-                                        <div class="d-flex flex-column">
-                                            <span class="text-dark text-hover-primary fs-6 fw-bolder">@Html.DisplayFor(modelItem => item.TaskName)</span>
-                                            <span class="sidebar-text-muted fw-bold"> @Html.DisplayFor(modelItem => item.Teams.emp_main.emp_arnm)</span>
-                                        </div>
-                                        <!--end::Text-->
-                                    </div>
-                                    <!--end::Item-->
-                                }
-                            </div>
-                            <!--end::Body-->
-                        </div>
-
-                    </div>
-                    <!--begin::Body-->
-
-                    <div class="row card-footer">
-                        <div class="col-3 timeline-badge text-center">
-                            <i class="fa fa-genderless text-primary fs-1"></i><br /> <small style="font-size:6pt">جديد</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <i class="fa fa-genderless text-success fs-1"></i><br /> <small style="font-size:6pt">تم التنفيذ</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <i class="fa fa-genderless text-warning fs-1"></i><br /> <small style="font-size:6pt">قيد التنفيذ</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <i class="fa fa-genderless text-danger fs-1"></i><br /> <small style="font-size:6pt">خارج الوقت</small>
+                            @if (item.TaskStat is null)
+                            {
+                                <div class="w-2 h-2 apexblue rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "قيد التنفيذ")
+                            {
+                                <div class="w-2 h-2 apexyellow rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "تم التنفيذ")
+                            {
+                                <div class="w-2 h-2 apexgraeen rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "خارج الوقت")
+                            {
+                                <div class="w-2 h-2 apexred rounded-full"></div>
+                            }
                         </div>
                     </div>
-
-                </div>
-                <!--end::Tables Widget 9-->
+                }
             </div>
         </div>
 
+        <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+            <div class="flex items-center">
+                <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                <span class="truncate">
+                    قيد التنفيذ
+                </span>
+
+            </div>
+
+            <div class="flex items-center mt-4">
+                <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                <span class="truncate">
+                    تم الانجاز
+                </span>
+
+            </div>
+
+            <div class="flex items-center mt-4">
+                <div class="w-2 h-2 apexred rounded-full mr-3"></div>
+                <span class="truncate">
+                    خارج الوقت
+                </span>
+
+            </div>
+
+            <div class="flex items-center mt-4">
+                <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                <span class="truncate">
+                    جديد
+                </span>
+
+            </div>
+
+
+
+
+        </div>
 
 
     </div>
-    <!--end::Container-->
 </div>
-<!--end::Content-->
+
 
 
 <script>

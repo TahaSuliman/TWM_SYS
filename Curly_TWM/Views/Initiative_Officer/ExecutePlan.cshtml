@@ -10,264 +10,196 @@
 <link href="~/Content/plugins/sweet-alert2/sweetalert2.css" rel="stylesheet" />
 <script src="~/Content/plugins/sweet-alert2/sweetalert2.js"></script>
 
-<!--begin::Content-->
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Container-->
-    <div class="container-xxl" id="kt_content_container">
-        <div class="d-flex flex-wrap flex-stack my-5">
-            <!--begin::Controls-->
-            <div class="d-flex flex-wrap my-1" data-select2-id="select2-data-123-oh5f">
-                <!--begin::Select wrapper-->
-                <div class="m-0" data-select2-id="select2-data-122-ckv0">
 
-                </div>
-                <!--end::Select wrapper-->
+<style>
+    .apexyellow {
+        background-color: #fee4b2
+    }
+
+    .apexgraeen {
+        background-color: #00d8b6
+    }
+
+    .apexred {
+        background-color: #ff1752
+    }
+
+    .apexblue {
+        background-color: #0086ff
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:first-child {
+        border-top-left-radius: 0rem !important;
+        border-top-right-radius: 0.375rem;
+        border-bottom-left-radius: 0rem !important;
+        border-bottom-right-radius: 0.375rem;
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:last-child {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0rem !important;
+        border-bottom-right-radius: 0rem !important;
+        border-bottom-left-radius: 0.375rem;
+    }
+</style>
+
+<div class="content" style="direction:rtl;text-align:right">
+    <h2 class="intro-y text-lg font-medium mt-10">
+        ادارة مهام الفريق / @ViewBag.InitiativeName
+    </h2>
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+
+
+        <div class="intro-y col-span-12 xl:col-span-8">
+            <div class="intro-y flex items-center h-10">
+                <h2 class="text-lg font-medium truncate mr-5">
+                    قائمة اعضاء الفريق
+                </h2>
             </div>
-            <!--end::Controls-->
-            <!--begin::Heading-->
-            <h2 class="fs-2 fw-bold my-2">
-                <span class="fs-6 text-gray-400 ms-1">ادارة مهام الفريق</span><br />
-                @ViewBag.InitiativeName
-            </h2>
-            <!--end::Heading-->
+            <table class="table" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
 
-        </div>
+                        <th class="whitespace-nowrap">
+                            عضو الفريق - المبادرة
+                        </th>
 
-        <div class="row gy-5 g-xl-10">
-            <div class="col-xxl-7">
-                <!--begin::Tables Widget 9-->
-                <div class="card card-xl-stretch mb-xl-10">
-
-                    <!--begin::Header-->
-                    <div class="card-header align-items-center border-0" style="direction: rtl;">
-                        <!--begin::Title-->
-                        <h3 class="card-title fw-bolder text-dark fs-3">قائمة اعضاء الفريق</h3>
-                        <!--end::Title-->
-
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body py-3">
-                        <!--begin::Table container-->
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" style="direction:rtl;text-align:right">
-                                <!--begin::Table head-->
-                                <thead>
-                                    <tr class="fw-bolder text-muted">
-
-                                        <th class="min-w-150px">عضو الفريق - المبادرة</th>
-
-                                        <th class="min-w-100px" style="text-align:left">الخيارات</th>
-                                    </tr>
-                                </thead>
-                                <!--end::Table head-->
-                                <!--begin::Table body-->
-                                <tbody>
-                                    @foreach (var item in ViewBag.Team)
-                                    {
-                                        <tr>
-
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="symbol symbol-45px me-5">
-                                                        @*<img src="assets/media/avatars/150-11.jpg" alt="" />*@
-                                                    </div>
-                                                    <div class="d-flex justify-content-start flex-column">
-                                                        <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">  @item.emp_main.emp_arnm </a>
-                                                        <span class="text-muted fw-bold text-muted d-block fs-7"> @item.Initiatives.InitiativeName</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td>
-                                                <div class="d-flex justify-content-end flex-shrink-0">
-                                                    <!--begin::Menu-->
-                                                    <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                                                        <span class="svg-icon svg-icon-2">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                    <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"></rect>
-                                                                    <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                                    <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                                    <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
-                                                                </g>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </button>
-                                                    <!--begin::Menu 3-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true" style="">
-                                                        <!--begin::Heading-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="@Url.Action("MemberDetails","Initiative_Officer" ,new { iId=item.Initiativeid ,TmId=item.Id} )" class="menu-link px-3">الاطلاع</a>
-                                                        </div>
-
-                                                        <div class="menu-item px-3">
-                                                            <a href="@Url.Action("CreateTask","Initiative_Officer" ,new { iId=item.Initiativeid ,TmId=item.Id} )" class="menu-link px-3">اضافة مهام للعضو</a>
-                                                        </div>
-
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3">متابعة الانجاز</a>
-                                                        </div>
-
-                                                        @*<div class="separator my-2"></div>
-
-                                            <div class="menu-item px-3">
-                                                <a href="@Url.Action("ExecutePlan","Initiative_Officer" )" class="menu-link px-3">ادارة مهام الفريق</a>
-                                            </div>
-
-                                            <div class="separator my-2"></div>*@
+                        <th class="whitespace-nowrap w-10">الخيارات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Team)
+                    {
+                        <tr class="">
 
 
-                                                    </div>
-                                                    <!--end::Menu 3-->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                                <!--end::Table body-->
-                            </table>
+                            <td class="whitespace-nowrap">
 
-                            <!--end::Table-->
-                        </div>
-                        <!--end::Table container-->
-                    </div>
-
-                </div>
-                    <!--end::Tables Widget 9-->
-                </div>
-            <div class="col-xxl-5">
-                <!--begin::Tables Widget 9-->
-                <div class="card card-xl-stretch mb-xl-10">
+                                <a href="" class="font-medium whitespace-nowrap">   @item.emp_main.emp_arnm </a>
+                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">  @item.emp_main.emp_code</div>
+                            </td>
 
 
-                    <!--begin::Body-->
-                    <div class="card-body py-3" style="direction:rtl">
-
-                        <div class="card card-flush card-p-0 shadow-none bg-transparent mb-5">
-                            <!--begin::Header-->
-                            <div class="card-header align-items-center border-0">
-                                <!--begin::Title-->
-                                <h3 class="card-title fw-bolder text-dark fs-3">قائمة المهام</h3>
-                                <!--end::Title-->
-
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body py-0">
-                                @foreach (var item in Model)
-                                {
+                            <td class="w-40">
 
 
-                                    <div class="d-flex flex-nowrap align-items-center mb-7">
-                                        <!--begin::Symbol-->
-                                        <div class="symbol symbol-50px me-5">
-                                            <span class="symbol-label sidebar-bg-muted">
+                                <div class="dropdown mr-1 mb-2" style="position: relative; display: contents;">
+                                    <button class="dropdown-toggle btn btn-primary tooltip" title="خيارات المبادرة" data-theme="light" aria-expanded="false" data-tw-toggle="dropdown">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="align-justify" data-lucide="align-justify" class="lucide lucide-align-justify w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg>
+                                    </button>
+                                    <div class="dropdown-menu w-40" id="_7icp3nw31" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 38px, 0px);">
+                                        <ul class="dropdown-content">
+                                            <li>
+                                                <a href="@Url.Action("MemberDetails","Initiative_Officer" ,new { iId=item.Initiativeid ,TmId=item.Id} )" class="dropdown-item">التفاصيل</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("CreateTask","Initiative_Officer" ,new { iId=item.Initiativeid ,TmId=item.Id} )" class="dropdown-item">اضافة مهام للعضو</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="dropdown-item">متابعة الانجاز</a>
+                                            </li>
 
-                                                @if (item.TaskStat is null)
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-primary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "قيد التنفيذ")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-warning">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "تم التنفيذ")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                                @if (item.TaskStat == "خارج الوقت")
-                                                {
-                                                    <span class="svg-icon svg-icon-2x svg-icon-danger">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.25 18.525L13.05 21.825C12.35 22.125 11.65 22.125 10.95 21.825L2.75 18.525C1.75 18.125 1.75 16.725 2.75 16.325L4.04999 15.825L10.25 18.325C10.85 18.525 11.45 18.625 12.05 18.625C12.65 18.625 13.25 18.525 13.85 18.325L20.05 15.825L21.35 16.325C22.35 16.725 22.35 18.125 21.25 18.525ZM13.05 16.425L21.25 13.125C22.25 12.725 22.25 11.325 21.25 10.925L13.05 7.62502C12.35 7.32502 11.65 7.32502 10.95 7.62502L2.75 10.925C1.75 11.325 1.75 12.725 2.75 13.125L10.95 16.425C11.65 16.725 12.45 16.725 13.05 16.425Z" fill="black"></path>
-                                                            <path d="M11.05 11.025L2.84998 7.725C1.84998 7.325 1.84998 5.925 2.84998 5.525L11.05 2.225C11.75 1.925 12.45 1.925 13.15 2.225L21.35 5.525C22.35 5.925 22.35 7.325 21.35 7.725L13.05 11.025C12.45 11.325 11.65 11.325 11.05 11.025Z" fill="black"></path>
-                                                        </svg>
-                                                    </span>
-                                                }
-                                            </span>
-                                        </div>
-                                        <!--end::Symbol-->
-                                        <!--begin::Text-->
-                                        <div class="d-flex flex-column">
-                                            <span class="text-dark text-hover-primary fs-6 fw-bolder">@Html.DisplayFor(modelItem => item.TaskName)</span>
-                                            <span class="sidebar-text-muted fw-bold"> @Html.DisplayFor(modelItem => item.Teams.emp_main.emp_arnm)</span>
-                                        </div>
-                                        <!--end::Text-->
+                                        </ul>
                                     </div>
-                                    <!--end::Item-->
-                                }
-                            </div>
-                            <!--end::Body-->
-                        </div>
-
-                    </div>
-                    <!--begin::Body-->
-
-                    <div class="row card-footer">
-
-                        <div class="col-3 timeline-badge text-center">
-                            <span class="svg-icon svg-icon-2hx svg-icon-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <circle fill="#000000" cx="12" cy="12" r="8" />
-                                </svg>
-                            </span>
-                            <br />
-                            <small style="font-size:6pt">جديد</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <span class="svg-icon svg-icon-2hx svg-icon-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <circle fill="#000000" cx="12" cy="12" r="8" />
-                                </svg>
-                            </span><br /> <small style="font-size:6pt">تم التنفيذ</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <span class="svg-icon svg-icon-2hx svg-icon-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <circle fill="#000000" cx="12" cy="12" r="8" />
-                                </svg>
-                            </span><br /> <small style="font-size:6pt">قيد التنفيذ</small>
-                        </div>
-                        <div class="col-3 timeline-badge text-center">
-                            <span class="svg-icon svg-icon-2hx svg-icon-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <circle fill="#000000" cx="12" cy="12" r="8" />
-                                </svg>
-                            </span><br /> <small style="font-size:6pt">خارج الوقت</small>
-                        </div>
-                    </div>
+                                </div>
 
 
-                </div>
-                <!--end::Tables Widget 9-->
-            </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
         </div>
 
 
+        <div class="col-span-12 xl:col-span-4 mt-6">
+            <div class="intro-y flex items-center h-10">
+                <h2 class="text-lg font-medium truncate mr-5">
+                    قائمة المهام
+                </h2>
+            </div>
+
+            <div class="mt-5">
+                @foreach (var item in Model)
+                {
+                    <div class="intro-y">
+                        <div class="box px-4 py-4 mb-3 flex items-center zoom-in">
+                            <div class="ml-4">
+                                <div class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.Teams.emp_main.emp_arnm)
+                                </div>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.TaskName)
+                                </div>
+                            </div>
+
+                            @if (item.TaskStat is null)
+                            {
+                                <div class="w-2 h-2 apexblue rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "قيد التنفيذ")
+                            {
+                                <div class="w-2 h-2 apexyellow rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "تم التنفيذ")
+                            {
+                                <div class="w-2 h-2 apexgraeen rounded-full"></div>
+                            }
+                            @if (item.TaskStat == "خارج الوقت")
+                            {
+                                <div class="w-2 h-2 apexred rounded-full"></div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                    <span class="truncate">
+                        قيد التنفيذ
+                    </span>
+
+                </div>
+
+                <div class="flex items-center mt-4">
+                    <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                    <span class="truncate">
+                        تم الانجاز
+                    </span>
+
+                </div>
+
+                <div class="flex items-center mt-4">
+                    <div class="w-2 h-2 apexred rounded-full mr-3"></div>
+                    <span class="truncate">
+                        خارج الوقت
+                    </span>
+
+                </div>
+
+                <div class="flex items-center mt-4">
+                    <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                    <span class="truncate">
+                        جديد
+                    </span>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
 
     </div>
-    <!--end::Container-->
 </div>
-<!--end::Content-->
+
 
 
 <script>

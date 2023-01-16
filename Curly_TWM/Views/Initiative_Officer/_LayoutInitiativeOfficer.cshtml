@@ -62,9 +62,9 @@
             <!-- BEGIN: Breadcrumb -->
             <nav aria-label="breadcrumb" class="-intro-x h-full mr-auto">
                 @*<ol class="breadcrumb breadcrumb-light">
-                        <li class="breadcrumb-item"><a href="#">Application</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>*@
+                <li class="breadcrumb-item"><a href="#">Application</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>*@
             </nav>
             <!-- END: Breadcrumb -->
             <!-- BEGIN: Search -->
@@ -152,37 +152,63 @@
                 </div>
             </div>
             <!-- END: Notifications -->
+            <div class="menu-item px-5">
+                <a href="" class="menu-link px-5"></a>
+            </div>
+            <div class="menu-item px-5">
+                @*@Url.Action("ChangePassword", "Manage")*@
+                <a href="#" class="menu-link px-5"></a>
+            </div>
+            <!--end::Menu item-->
+            <!--begin::Menu separator-->
+            <div class="separator my-2"></div>
+
+            <!--begin::Menu item-->
+            <div class="menu-item px-5">
+
+            </div>
             <!-- BEGIN: Account Menu -->
             <div class="intro-x dropdown w-8 h-8">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                    <img alt="Midone - HTML Admin Template" src="~/Content/dist/images/profile-9.jpg">
+                    <img alt="Midone - HTML Admin Template" src="~/Uploads/Documents/@Session["Avatar"]">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                         <li class="p-2">
-                            <div class="font-medium">Denzel Washington</div>
-                            <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">DevOps Engineer</div>
+                            <div class="font-medium">  @Session["user"]</div>
+                            <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">  @Session["jobtitle"]</div>
                         </li>
                         <li>
                             <hr class="dropdown-divider border-white/[0.08]">
                         </li>
                         <li>
-                            <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="user" class="w-4 h-4 ml-2"></i> Profile </a>
+                            <a href="" class="dropdown-item hover:bg-white/5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="user" data-lucide="user" class="lucide lucide-user w-4 h-4 ml-2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                ادارة الحساب
+                            </a>
+
                         </li>
                         <li>
-                            <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 ml-2"></i> Add Account </a>
+                            <a href="@Url.Action("Land", "Account")" class="dropdown-item hover:bg-white/5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="corner-down-left" data-lucide="corner-down-left" class="lucide lucide-corner-down-left w-4 h-4 ml-2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                عودة للاختيار
+                            </a>
                         </li>
-                        <li>
-                            <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 ml-2"></i> Reset Password </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle" class="w-4 h-4 ml-2"></i> Help </a>
-                        </li>
+            
                         <li>
                             <hr class="dropdown-divider border-white/[0.08]">
                         </li>
                         <li>
-                            <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="toggle-right" class="w-4 h-4 ml-2"></i> Logout </a>
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item hover:bg-white/5"><i data-lucide="toggle-right" class="w-4 h-4 ml-2"></i> تسجيل الخروج</a>
+
+                                }
+                            }
                         </li>
                     </ul>
                 </div>
