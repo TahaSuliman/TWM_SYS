@@ -49,18 +49,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index","Home")" class="menu">
+                    <a href="@Url.Action("Main","Organizational_Manager")" class="menu">
                         <div class="menu__icon"> <i data-lucide="user-plus"></i> </div>
-                        <div class="menu__title"> الموظفين <i class="menu__sub-icon"></i> </div>
+                        <div class="menu__title"> متابعة الإنجاز <i class="menu__sub-icon"></i> </div>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Main","Account")" class="menu">
+                    <a href="@Url.Action("Initiatives","Organizational_Manager")" class="menu">
                         <div class="menu__icon"> <i data-lucide="users"></i> </div>
-                        <div class="menu__title"> ادارة المستخدمين <i class="menu__sub-icon"></i> </div>
+                        <div class="menu__title"> المبادرات والمشاريع <i class="menu__sub-icon"></i> </div>
                     </a>
                 </li>
-                <li>
+                @*<li>
                     <a href="javascript:;" class="menu">
                         <div class="menu__icon"> <i data-lucide="box"></i> </div>
                         <div class="menu__title"> التحكم في القوائم <i data-lucide="chevron-down" class="menu__sub-icon"></i> </div>
@@ -116,7 +116,7 @@
 
 
                     </ul>
-                </li>
+                </li>*@
 
             </ul>
         </div>
@@ -284,18 +284,19 @@
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("Index","Home")" class="top-menu">
-                    <div class="top-menu__icon"> <i data-lucide="user-plus"></i> </div>
-                    <div class="top-menu__title"> الموظفين <i class="top-menu__sub-icon"></i> </div>
+                <a href="@Url.Action("Main","Organizational_Manager")" class="top-menu">
+                    <div class="top-menu__icon"><i data-lucide="rotate-cw" class="block mx-auto"></i> </div>
+                    <div class="top-menu__title"> متابعة الإنجاز <i class="top-menu__sub-icon"></i> </div>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("Main","Account")" class="top-menu">
-                    <div class="top-menu__icon"> <i data-lucide="users"></i> </div>
-                    <div class="top-menu__title"> ادارة المستخدمين <i class="top-menu__sub-icon"></i> </div>
+                <a href="@Url.Action("Initiatives","Organizational_Manager")" class="top-menu">
+                    <div class="top-menu__icon"><i data-lucide="align-justify"></i> </div>
+                    <div class="top-menu__title"> المبادرات والمشاريع <i class="top-menu__sub-icon"></i>
+                    </div>
                 </a>
             </li>
-            <li>
+            @*<li>
                 <a href="javascript:;" class="top-menu">
                     <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
                     <div class="top-menu__title"> التحكم في القوائم <i data-lucide="chevron-down" class="top-menu__sub-icon"></i> </div>
@@ -351,7 +352,7 @@
 
 
                 </ul>
-            </li>
+            </li>*@
 
 
         </ul>

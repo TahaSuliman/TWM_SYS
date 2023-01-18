@@ -82,9 +82,17 @@ namespace Curly_TWM.Controllers
             }
         }
         //
-        public ActionResult Main()
+        public ActionResult Main( )
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -242,6 +250,11 @@ namespace Curly_TWM.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (Session["Style"] == null)
+            {
+                Session["Style"] = "light";  // dark  light
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -267,6 +280,10 @@ namespace Curly_TWM.Controllers
                 case SignInStatus.Success:
                     {
 
+                        //var userId = User.Identity.GetUserId();
+                        string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+                        Session["userId"] = userId;
+
 
                         return RedirectToAction("checkk", "Account");
 
@@ -284,9 +301,16 @@ namespace Curly_TWM.Controllers
                     return View(model);
             }
         }
-        public ActionResult checkk()
+        public ActionResult checkk(  )
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -310,7 +334,7 @@ namespace Curly_TWM.Controllers
             //متعدد الصلاحيات
             if(UserManager.GetRoles(userId).ToList().Count() > 1)
             {
-                return RedirectToAction("Land");
+                return RedirectToAction("Land","Account");
             }
             //احادي الصلاحيات
             else if (UserManager.GetRoles(userId).ToList().Count() == 1)
@@ -336,11 +360,19 @@ namespace Curly_TWM.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult Land()
+        public ActionResult Land( )
         {
             ViewBag.ActionName = "صلاحيات المستخدم";
 
-            var userId = User.Identity.GetUserId();
+            //var userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+            
+            string userId = (string)Session["userId"];
+
+            //var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -795,8 +827,8 @@ namespace Curly_TWM.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

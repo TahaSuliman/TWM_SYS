@@ -34,7 +34,14 @@ namespace Curly_TWM.Controllers
         public ActionResult Main()
         {
             ViewBag.ActionName = "الرئيسية";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -142,7 +149,14 @@ namespace Curly_TWM.Controllers
         public ActionResult Initiatives()
         {
             ViewBag.ActionName = "الرئيسية";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -194,7 +208,14 @@ namespace Curly_TWM.Controllers
         //قائمة المهام
         public ActionResult TasksList(int id)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -216,7 +237,14 @@ namespace Curly_TWM.Controllers
         //قائمة زملاء الفريق
         public ActionResult MembersList(int id)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -276,6 +304,12 @@ namespace Curly_TWM.Controllers
         //تفاصيل المهمة
         public ActionResult TaskDetails(int id)
         {
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+           
             Team_Tasks maindata = unitfw.Team_Tasks.GetObjByID(id);
             if (maindata == null)
             {

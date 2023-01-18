@@ -33,7 +33,15 @@ namespace Curly_TWM.Controllers
         }
         public ActionResult Main()
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -105,7 +113,17 @@ namespace Curly_TWM.Controllers
         //المبادرات 
         public ActionResult Initiatives()
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
+
             var user = db.Users.Find(userId);
 
             var grpman = unitfw.GenericRepos<Initiatives>().Find(c => (c.empid == user.emp_Id)).ToList();
@@ -349,7 +367,16 @@ namespace Curly_TWM.Controllers
         //فرق العمل
         public ActionResult Teams(int iId)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
+
             var user = db.Users.Find(userId);
 
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -409,7 +436,15 @@ namespace Curly_TWM.Controllers
         //ادارة مهام الفريق
         public ActionResult ExecutePlan(int iId)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             //Team_Tasks
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -466,7 +501,15 @@ namespace Curly_TWM.Controllers
         public ActionResult MemberDetails(int iId,int TmId)
         {
             ViewBag.ActionName = "اضافة مهام";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
 
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -482,7 +525,15 @@ namespace Curly_TWM.Controllers
         //الشركاء
         public ActionResult Partners(int iId)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             //Team_Tasks
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -494,7 +545,15 @@ namespace Curly_TWM.Controllers
         public ActionResult CreatePartner(int iId)
         {
             ViewBag.ActionName = "اضافة شريك للمبادرة";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
 
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -533,7 +592,15 @@ namespace Curly_TWM.Controllers
         //المخاطر
         public ActionResult RiskList(int iId)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             //Team_Tasks
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -545,7 +612,16 @@ namespace Curly_TWM.Controllers
         public ActionResult CreateRisk(int iId)
         {
             ViewBag.ActionName = "اضافة مخاطر للمبادرة";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
+
             var user = db.Users.Find(userId);
 
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -584,7 +660,15 @@ namespace Curly_TWM.Controllers
         //المؤشرات
         public ActionResult OperationalIndicators(int iId)
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             //Team_Tasks
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));
@@ -596,7 +680,15 @@ namespace Curly_TWM.Controllers
         public ActionResult CreateIndicator(int iId)
         {
             ViewBag.ActionName = "اضافة المؤشرات";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
 
             var iNm = unitfw.Initiatives.SingleOrDefault(c => (c.Id == iId));

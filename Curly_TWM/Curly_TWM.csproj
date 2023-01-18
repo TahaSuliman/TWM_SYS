@@ -249,6 +249,7 @@
     <Content Include="Content\dist\css\app.css" />
     <Content Include="Content\dist\css\custom.css" />
     <Content Include="Content\dist\css\_app.css" />
+    <Content Include="Content\dist\fetch.min.js" />
     <Content Include="Content\dist\fonts\roboto\LICENSE.txt" />
     <Content Include="Content\dist\images\bg-main-dark.svg" />
     <Content Include="Content\dist\images\bg-main.svg" />
@@ -496,6 +497,15 @@
     <Content Include="Views\Initiative_Officer\RiskList.cshtml" />
     <Content Include="Views\Initiative_Officer\Teams.cshtml" />
     <Content Include="Views\Initiative_Officer\_LayoutInitiativeOfficer.cshtml" />
+    <Content Include="Views\SysMan\Index.cshtml" />
+    <Content Include="Views\SysMan\_SysManLayout.cshtml" />
+    <Content Include="Views\SysMan\Main.cshtml" />
+    <Content Include="Views\SysMan\Initiatives.cshtml" />
+    <Content Include="Views\SysMan\DetailsInitiatives.cshtml" />
+    <Content Include="Views\Organizational_Manager\Main.cshtml" />
+    <Content Include="Views\Organizational_Manager\Initiatives.cshtml" />
+    <Content Include="Views\Organizational_Manager\DetailsInitiatives.cshtml" />
+    <Content Include="Views\Organizational_Manager\_OrganizationalManagerLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

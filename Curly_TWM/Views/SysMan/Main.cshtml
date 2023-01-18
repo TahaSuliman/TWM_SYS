@@ -1,0 +1,451 @@
+﻿
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/SysMan/_SysManLayout.cshtml";
+
+}
+
+<script src="~/Content/dist/charts/apexcharts.js"></script>
+
+
+<style>
+    .apexyellow {
+        background-color: #fee4b2
+    }
+
+    .apexgraeen {
+        background-color: #00d8b6
+    }
+
+    .apexred {
+        background-color: #ff1752
+    }
+
+    .apexblue {
+        background-color: #0086ff
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:first-child {
+        border-top-left-radius: 0rem !important;
+        border-top-right-radius: 0.375rem;
+        border-bottom-left-radius: 0rem !important;
+        border-bottom-right-radius: 0.375rem;
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:last-child {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0rem !important;
+        border-bottom-right-radius: 0rem !important;
+        border-bottom-left-radius: 0.375rem;
+    }
+</style>
+
+
+<div class="content" style="direction:rtl;text-align:right">
+    <h2 class="intro-y text-lg font-medium mt-10">
+        @ViewBag.ActionName
+    </h2>
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+
+        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
+            <div class="intro-y box col-span-12 lg:col-span-4" style="direction:rtl">
+
+                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <h2 class="font-medium text-base">
+                        اجمالي المبادرات و المشاريع
+                    </h2>
+                    <div class="dropdown ml-auto sm:hidden">
+                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                        <div class="dropdown-menu w-40">
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a href="javascript:;" class="dropdown-item">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="p-5">
+                    <div class="tab-content">
+                        <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
+                            <div class="relative">
+                                <div class="h-[208px]">
+
+                                    <div id="chart2"> </div>
+
+                                </div>
+                            </div>
+                            <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                                    <span class="truncate">
+                                        قيد التنفيذ
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        تم الانجاز
+                                    </span>
+
+                                </div>
+
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        قيد التخطيط
+                                    </span>
+
+                                </div>
+
+
+                                <div class="flex items-center mt-4">
+
+                                    <span class="truncate">
+                                        <br />
+                                    </span>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6">
+            <div class="intro-y box col-span-12 lg:col-span-4" style="direction:rtl">
+
+                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                    <h2 class="font-medium text-base">
+                        نسبة تنفيذ المهام
+                    </h2>
+                    <div class="dropdown ml-auto sm:hidden">
+                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                        <div class="dropdown-menu w-40">
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a href="javascript:;" class="dropdown-item">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="p-5">
+                    <div class="tab-content">
+                        <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
+                            <div class="relative">
+                                <div class="h-[208px]">
+
+                                    <div id="chart1"> </div>
+
+                                </div>
+                            </div>
+                            <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                                    <span class="truncate">
+                                        قيد التنفيذ
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        تم الانجاز
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexred rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        خارج الوقت
+                                    </span>
+
+                                </div>
+
+                                <div class="flex items-center mt-4">
+                                    <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                                    <span class="truncate">
+                                        جديد
+                                    </span>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+    @*<div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 md:col-span-12 lg:col-span-12 xl:col-span-12">
+            اعضاء الفريق
+            @Model.Count()
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+
+                        <th class="whitespace-nowrap">
+                            عضو الفريق - المبادرة
+                        </th>
+                        <th class="whitespace-nowrap">
+                            الادارة
+                        </th>
+
+                        <th class="whitespace-nowrap">
+                            عدد المهام
+                        </th>
+                        <th class="whitespace-nowrap">
+                            الخيارات
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+                                <a href="" class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.emp_main.emp_arnm)
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.Initiatives.InitiativeName)
+                                </div>
+                            </td>
+                            <td>
+                                <a href="" class="font-medium">
+                                    @Html.DisplayFor(modelItem => item.emp_main.Branchs.Sections.Departments.DepartmentName)
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @Html.DisplayFor(modelItem => item.emp_main.Branchs.BranchsName)
+                                </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.remarks)
+                            </td>
+                            <td>
+
+                                <div class="preview">
+
+                                    <a href="#" class="btn btn-warning mr-1 mb-2 tooltip" title="تعديل" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-5 h-5"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg> </a>
+
+
+                                    <a href="#" class="btn btn-primary mr-1 mb-2 tooltip" title="التفاصيل" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="file-text" data-lucide="file-text" class="lucide lucide-file-text w-5 h-5"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg> </a>
+
+                                    <a href="#" class="btn btn-danger mr-1 mb-2 tooltip" title="حذف" data-theme="light"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash" data-lucide="trash" class="lucide lucide-trash w-5 h-5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg> </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>*@
+</div>
+
+
+<script>
+    var options1 = {
+        series: [@ViewBag.EtaskCou,@ViewBag.DtaskCou ,@ViewBag.OtaskCou ,@ViewBag.NtaskCou ],
+        colors: ['#fee4b2', '#00d8b6', '#ff1752', '#0086ff'],
+        chart: {
+
+            type: 'donut',
+            width: 300
+        },
+        dataLabels: {
+            enabled: false
+        },
+        labels: ['قيد التنفيذ', 'تم الانجاز', 'خارج الوقت', 'جديد'],
+        legend: {
+            show: false,
+        },
+        //fill: {
+        //    type: 'gradient',
+        //},
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        tooltip: {
+            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+
+                    w.globals.labels[seriesIndex] +
+                    ": " +
+                    series[seriesIndex] +
+                    "</span>" +
+                    "</div>"
+                );
+            }
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontSize: '22px',
+                            offsetY: -5
+                        },
+                        value: {
+                            show: true,
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: +5,
+                            formatter: function (val) {
+                                return val
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'العدد الاجمالي',
+                            color: '#ffa500',
+                            fontFamily:'myfont4',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce((a, b) => {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    chart1.render();
+</script>
+
+<script>
+
+
+    var options1 = {
+        series: [@ViewBag.InitsRunCou,@ViewBag.InitsDoneCou ,@ViewBag.InitsPlanCou ],
+        colors: ['#fee4b2', '#00d8b6', '#0086ff'],
+        chart: {
+
+            type: 'donut',
+            width: 300
+        },
+        dataLabels: {
+            enabled: false
+        },
+        labels: ['قيد التنفيذ', 'تم الانجاز', 'قيد التخطيط'],
+        legend: {
+            show: false,
+        },
+        //fill: {
+        //    type: 'gradient',
+        //},
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        tooltip: {
+            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+
+                    w.globals.labels[seriesIndex] +
+                    ": " +
+                    series[seriesIndex] +
+                    "</span>" +
+                    "</div>"
+                );
+            }
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontSize: '22px',
+                            offsetY: -5
+                        },
+                        value: {
+                            show: true,
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: +5,
+                            formatter: function (val) {
+                                return val
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'العدد الاجمالي',
+                            color: '#ffa500',
+                            fontFamily:'myfont4',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce((a, b) => {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart2"), options1);
+    chart1.render();
+</script>
+
+

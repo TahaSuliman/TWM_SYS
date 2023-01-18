@@ -1,0 +1,664 @@
+﻿@model IEnumerable<Curly_TWM.Models.Empviewmodel>
+
+@{
+    ViewBag.Title = "DetailsInitiatives";
+
+    Layout = "~/Views/Organizational_Manager/_OrganizationalManagerLayout.cshtml";
+
+
+}
+
+
+<script src="~/Content/dist/charts/apexcharts.js"></script>
+
+<style>
+    .apexyellow {
+        background-color: #fee4b2
+    }
+
+    .apexgraeen {
+        background-color: #00d8b6
+    }
+
+    .apexred {
+        background-color: #ff1752
+    }
+
+    .apexblue {
+        background-color: #0086ff
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:first-child {
+        border-top-left-radius: 0rem !important;
+        border-top-right-radius: 0.375rem;
+        border-bottom-left-radius: 0rem !important;
+        border-bottom-right-radius: 0.375rem;
+    }
+
+    .table-report:not(.table-report--bordered):not(.table-report--tabulator) td:last-child {
+        border-top-left-radius: 0.375rem;
+        border-top-right-radius: 0rem !important;
+        border-bottom-right-radius: 0rem !important;
+        border-bottom-left-radius: 0.375rem;
+    }
+</style>
+
+
+
+<!-- BEGIN: Content -->
+<div class="content">
+    <div class="intro-y flex items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            التفاصيل
+        </h2>
+    </div>
+    <!-- BEGIN: Profile Info -->
+    <div class="intro-y box px-5 pt-5 mt-5">
+        <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+            <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
+                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="~/Uploads/Documents/@Session["Avatar"]">
+                </div>
+                <div class="ml-5">
+                    <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">@ViewBag.emp_arnm</div>
+                    <div class="text-slate-500"> @Session["jobtitle"]</div>
+                </div>
+            </div>
+
+            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+
+                <div class="flex flex-col justify-center items-center lg:items-center mt-4">
+                    <div class="truncate sm:whitespace-normal flex items-center font-normal">العنوان</div>
+                    <h3 class="text-1xl text-primary leading-none mt-4 font-extrabold">@ViewBag.InitiativeName</h3>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-4 font-normal">الهدف الاستراتيجي</div>
+                    <h3 class="text-1xl text-primary leading-none mt-4 font-extrabold">@ViewBag.TargetName</h3>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="mt-6 lg:mt-0 flex-1 flex items-center justify-center px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
+                <div class="text-center rounded-md w-20 py-3">
+                    <div class="font-medium text-primary text-xl">@ViewBag.EtaskCou</div>
+                    <div class="text-slate-500">المهام المنجزة</div>
+                </div>
+                <div class="text-center rounded-md w-20 py-3">
+                    <div class="font-medium text-primary text-xl">@ViewBag.taskCou</div>
+                    <div class="text-slate-500">اجمالي المهام</div>
+                </div>
+                <div class="text-center rounded-md w-20 py-3">
+                    <div class="font-medium text-primary text-xl">@ViewBag.tms</div>
+                    <div class="text-slate-500">اعضاء الفريق</div>
+                </div>
+
+            </div>
+        </div>
+        <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-end text-center" role="tablist">
+            <li id="uploads-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#uploads" aria-selected="false" role="tab">
+                    الملفات و الوثائق
+                </a>
+            </li>
+            <li id="OperationalIndicator-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#OperationalIndicator" aria-selected="false" role="tab">
+                    المؤشرات
+                </a>
+            </li>
+            <li id="Risk-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#Risk" aria-selected="false" role="tab">
+                    المخاطر
+                </a>
+            </li>
+            <li id="partners-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#partners" aria-selected="false" role="tab">
+                    الشركاء
+                </a>
+            </li>
+            <li id="tasks-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#tasks" aria-selected="false" role="tab">
+                    المهام
+                </a>
+            </li>
+            <li id="team-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center" data-tw-target="#team" aria-selected="false" role="tab">
+                    الفريق
+                </a>
+            </li>
+            <li id="profile-tab" class="nav-item" role="presentation">
+                <a href="javascript:;" class="nav-link py-4 flex items-center active" data-tw-target="#profile" aria-controls="profile" aria-selected="true" role="tab">
+                    المعلومات
+                </a>
+            </li>
+
+
+
+
+
+
+
+
+
+        </ul>
+    </div>
+    <!-- END: Profile Info -->
+    <div class="tab-content mt-5">
+        <!--المعلومات-->
+        <div id="profile" class="tab-pane active" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="grid grid-cols-12 gap-6" style="text-align:right">
+                <!-- BEGIN: Latest Uploads -->
+                <div class="intro-y box col-span-12 lg:col-span-8" style="direction:rtl">
+                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base">
+                            التفاصيل
+                        </h2>
+                        <div class="dropdown ml-auto sm:hidden">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="javascript:;" class="dropdown-item">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-5">
+
+                        <div class="font-medium">
+                            @ViewBag.InitiativeDeatails
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- END: Latest Uploads -->
+                <!-- BEGIN: Work In Progress -->
+                <div class="intro-y box col-span-12 lg:col-span-4" style="direction:rtl">
+
+                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base">
+                            نسبة تنفيذ المهام
+                        </h2>
+                        <div class="dropdown ml-auto sm:hidden">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+                                        <a href="javascript:;" class="dropdown-item">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-5">
+                        <div class="tab-content">
+                            <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
+                                <div class="relative">
+                                    <div class="h-[208px]">
+
+                                        <div id="chart1"> </div>
+
+                                    </div>
+                                </div>
+                                <div class="w-52 sm:w-auto mx-auto mt-5" style=" direction: ltr;">
+
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 rounded-full mr-3 apexyellow"></div>
+                                        <span class="truncate">
+                                            قيد التنفيذ
+                                        </span>
+
+                                    </div>
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="w-2 h-2 apexgraeen rounded-full mr-3"></div>
+                                        <span class="truncate">
+                                            تم الانجاز
+                                        </span>
+
+                                    </div>
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="w-2 h-2 apexred rounded-full mr-3"></div>
+                                        <span class="truncate">
+                                            خارج الوقت
+                                        </span>
+
+                                    </div>
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="w-2 h-2 apexblue rounded-full mr-3"></div>
+                                        <span class="truncate">
+                                            جديد
+                                        </span>
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--الفريق-->
+        <div id="team" class="tab-pane" role="tabpanel" aria-labelledby="team-tab">
+            <div class="grid grid-cols-12 gap-6" style="direction:rtl;text-align:right">
+
+                @foreach (var item in Model)
+                {
+
+
+
+                    <div class="intro-y col-span-12 md:col-span-2 lg:col-span-2">
+                        <div class="box">
+                            <div class="flex items-start px-5 pt-5">
+                                <div class="w-full flex flex-col lg:flex-row items-center">
+                                    <div class="w-16 h-16 image-fit">
+                                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="~/Uploads/Documents/@item.FileId">
+                                    </div>
+                                    <div class="lg:mr-4 text-center lg:text-left mt-3 lg:mt-0">
+                                        <a href="" class="font-medium">
+                                            @Html.DisplayFor(modelItem => item.P.emp_main.emp_arnm)
+                                        </a>
+                                        <div class="text-slate-500 text-xs mt-0.5">@Html.DisplayFor(modelItem => item.P.emp_main.Branchs.Sections.Departments.DepartmentName)</div>
+                                    </div>
+                                </div>
+                                @*<div class="absolute left-0 top-0 mr-5 mt-3 dropdown">
+                                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="more-horizontal" data-lucide="more-horizontal" class="lucide lucide-more-horizontal w-5 h-5 text-slate-500"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg> </a>
+                                        <div class="dropdown-menu w-40">
+                                            <div class="dropdown-content">
+                                                <a href="" class="dropdown-item"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="edit-2" data-lucide="edit-2" class="lucide lucide-edit-2 w-4 h-4 mr-2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg> Edit </a>
+                                                <a href="" class="dropdown-item"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash" data-lucide="trash" class="lucide lucide-trash w-4 h-4 mr-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg> Delete </a>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <div class="text-center lg:text-left p-5">
+                                <div>
+
+                                </div>
+                                <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5">
+                                    @Html.DisplayFor(modelItem => item.P.emp_main.emp_code)
+                                </div>
+                                <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1">
+                                    @Html.DisplayFor(modelItem => item.P.emp_main.Jobs.JobName)
+                                </div>
+                            </div>
+                            @*<div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
+                                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
+                                </div>*@
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <!--المهام-->
+        <div id="tasks" class="tab-pane" role="tabpanel" aria-labelledby="tasks-tab">
+
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">المهمة </th>
+                        <th class="whitespace-nowrap">المسؤول من التنفيذ</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Tasks)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+
+                                <a href="" class="font-medium">
+                                    @item.TaskName
+                                </a>
+
+                                @if (item.TaskStat is null)
+                                {
+                                    <div class="text-xs mt-0.5 text-primary">
+                                        <div class="w-2 h-2 apexblue rounded-full"></div>
+                                        جديد
+                                    </div>
+
+                                }
+                                @if (item.TaskStat == "قيد التنفيذ")
+                                {
+                                    <div class="text-xs mt-0.5 text-warning">
+                                        <div class="w-2 h-2 apexyellow rounded-full"></div>
+                                        قيد التنفيذ
+                                    </div>
+                                }
+                                @if (item.TaskStat == "تم التنفيذ")
+                                {
+                                    <div class="text-xs mt-0.5 text-success">
+                                        <div class="w-2 h-2 apexgraeen rounded-full"></div>
+                                        تم التنفيذ
+                                    </div>
+
+                                }
+                                @if (item.TaskStat == "خارج الوقت")
+                                {
+                                    <div class="text-xs mt-0.5 text-danger">
+
+                                        <div class="w-2 h-2 apexred rounded-full"></div>
+
+                                        خارج الوقت
+                                    </div>
+                                }
+
+                            </td>
+                            <td>
+                                @item.Teams.emp_main.emp_arnm
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <!--الشركاء-->
+        <div id="partners" class="tab-pane" role="tabpanel" aria-labelledby="partners-tab">
+
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">الشريك </th>
+                        <th class="whitespace-nowrap">الدور</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Partner)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+                                <a href="" class="font-medium">
+                                    @item.Partner
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @item.Partner_add
+                                </div>
+                            </td>
+                            <td>
+                                @item.Partner_rol
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <!--المخاطر-->
+        <div id="Risk" class="tab-pane" role="tabpanel" aria-labelledby="Risk-tab">
+
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap"> الخطر </th>
+                        <th class="whitespace-nowrap">احتمالية وقوع الخطر</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Risk)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+                                <a href="" class="font-medium">
+                                    @item.Risk
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+                                    @item.Risk_Type
+                                </div>
+                            </td>
+                            <td>
+                                @item.Risk_class
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <!--المؤشرات-->
+        <div id="OperationalIndicator" class="tab-pane" role="tabpanel" aria-labelledby="OperationalIndicator-tab">
+
+            <table class="table table-report sm:mt-2" style="direction:rtl;text-align:right">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap"> المؤشر </th>
+                        <th class="whitespace-nowrap">المستهدف / المحقق</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.OperationalIndicator)
+                    {
+                        <tr class="intro-x">
+
+                            <td>
+                                <a href="" class="font-medium">
+                                    @item.Indicator
+                                </a>
+                                <div class="text-slate-500 text-xs mt-0.5">
+
+                                </div>
+                            </td>
+                            <td>
+                                @item.Indicator_Target /  @item.Indicator_Result
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <!--المرفقات-->
+        <div id="uploads" class="tab-pane" role="tabpanel" aria-labelledby="uploads-tab">
+            <div class="grid grid-cols-12 gap-6">
+                <!-- BEGIN: Latest Uploads -->
+                <div class="intro-y box col-span-12 lg:col-span-6">
+                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base mr-auto">
+                            وثائق المهام
+                        </h2>
+                        <div class="dropdown ml-auto sm:hidden">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                    <li>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-5">
+                        @foreach (var item in ViewBag.Tuploads)
+                        {
+                            <div class="flex items-center">
+                                <div class="file"> <a href="" class="w-12 file__icon file__icon--directory"></a> </div>
+                                <div class="ml-4">
+                                    <a class="font-medium" href="~/Uploads/Documents/@item.doc_ur" target="_blank">@item.Team_Tasks.TaskName</a>
+                                    <div class="text-slate-500 text-xs mt-0.5">
+                                        @item.doc_discription
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-auto">
+                                    <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                                    <div class="dropdown-menu w-40">
+                                        <ul class="dropdown-content">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- END: Latest Uploads -->
+                <!-- BEGIN: Latest Uploads -->
+                <div class="intro-y box col-span-12 lg:col-span-6">
+                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-medium text-base mr-auto">
+                            وثائق المبادرة
+                        </h2>
+                        <div class="dropdown ml-auto sm:hidden">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                            <div class="dropdown-menu w-40">
+                                <ul class="dropdown-content">
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-5">
+                        @foreach (var item in ViewBag.Iuploads)
+                        {
+                            <div class="flex items-center">
+                                <div class="file"> <a href="" class="w-12 file__icon file__icon--directory"></a> </div>
+                                <div class="ml-4">
+                                    <a class="font-medium" href="~/Uploads/Documents/@item.doc_url" target="_blank"> @item.doc_discription</a>
+                                    <div class="text-slate-500 text-xs mt-0.5">
+
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-auto">
+                                    <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                                    <div class="dropdown-menu w-40">
+                                        <ul class="dropdown-content">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- END: Latest Uploads -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- END: Content -->
+<script>
+
+
+    var options1 = {
+        series: [@ViewBag.EtaskCou,@ViewBag.DtaskCou ,@ViewBag.OtaskCou ,@ViewBag.NtaskCou ],
+        colors: ['#fee4b2', '#00d8b6', '#ff1752', '#0086ff'],
+        chart: {
+
+            type: 'donut',
+            width: 300
+        },
+        dataLabels: {
+            enabled: false
+        },
+        labels: ['قيد التنفيذ', 'تم الانجاز', 'خارج الوقت', 'جديد'],
+        legend: {
+            show: false,
+        },
+        //fill: {
+        //    type: 'gradient',
+        //},
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }],
+        tooltip: {
+            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+
+                    w.globals.labels[seriesIndex] +
+                    ": " +
+                    series[seriesIndex] +
+                    "</span>" +
+                    "</div>"
+                );
+            }
+        },
+        plotOptions: {
+            pie: {
+                expandOnClick: false,
+                donut: {
+                    labels: {
+                        show: true,
+                        name: {
+                            show: true,
+                            fontSize: '22px',
+                            offsetY: -5
+                        },
+                        value: {
+                            show: true,
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: +5,
+                            formatter: function (val) {
+                                return val
+                            }
+                        },
+                        total: {
+                            show: true,
+                            label: 'العدد الاجمالي',
+                            color: '#ffa500',
+                            fontFamily:'myfont4',
+                            formatter: function (w) {
+                                return w.globals.seriesTotals.reduce((a, b) => {
+                                    return a + b
+                                }, 0)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    chart1.render();
+</script>

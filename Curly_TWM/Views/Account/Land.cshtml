@@ -24,6 +24,21 @@
     <!-- END: CSS Assets-->
     <link href="~/icofont.css" rel="stylesheet" />
     <link href="~/Fonts_Face.css" rel="stylesheet" />
+
+    @*//-------------------------------------------*@
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <script>
+
+    var css_1 = '@Session["Style"]';
+    if (css_1 == "dark") {
+        $(".light").addClass("dark").removeClass("light");
+    }
+
+    </script>
+
+
 </head>
 <!-- END: Head -->
 <body class="login">
@@ -66,7 +81,6 @@
                     <div class="col-span-12 xl:col-span-4 mt-6">
                         <div class="intro-y flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
-                               
                             </h2>
                         </div>
                         <div class="mt-5">
@@ -100,7 +114,7 @@
                                         </div>
                                     </a>
                                 }
-                                
+
                                 if (r == "Initiative_Officer")
                                 {
                                     <a href="@Url.Action("Main", "Initiative_Officer")" class="intro-y">
@@ -114,7 +128,7 @@
                                         </div>
                                     </a>
                                 }
-                                                                
+
                                 if (r == "Team_Member")
                                 {
                                     <a href="@Url.Action("Main", "Team_Member")" class="intro-y">
@@ -129,7 +143,7 @@
                                     </a>
                                 }
 
-                                                                                                
+
                                 if (r == "Admin")
                                 {
                                     <a href="@Url.Action("Index", "Home")" class="intro-y">
@@ -159,12 +173,50 @@
     </div>
     <!-- BEGIN: Dark Mode Switcher-->
     @*<div data-url="login-dark-login.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
-        <div class="mr-4 text-slate-600 dark:text-slate-200">Dark Mode</div>
-        <div class="dark-mode-switcher__toggle border"></div>
-    </div>*@
+            <div class="mr-4 text-slate-600 dark:text-slate-200">Dark Mode</div>
+            <div class="dark-mode-switcher__toggle border"></div>
+        </div>*@
     <!-- END: Dark Mode Switcher-->
     <!-- BEGIN: JS Assets-->
+    <script src="~/Content/dist/fetch.min.js"></script>
+
     <script src="~/Content/dist/js/app.js"></script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var css_2 = '@Session["Style"]';
+            if (css_2 == "dark") {
+                $(".light").addClass("dark").removeClass("light");
+            }
+        });
+
+        async function ToggleClass() {
+
+            const response = await fetch("/Home/ToggleClass")
+                .catch(error => {
+                    console.log("handle error", error);
+                });
+            const data = await response.json();
+            console.log("Style: ", data);
+
+            if (data == "dark") {
+
+            $(".dark").addClass("light").removeClass("dark");
+
+            } else {
+
+            $(".light").addClass("dark").removeClass("light");
+
+            }
+
+        //    return data;
+        }
+    </script>
+    
     <!-- END: JS Assets-->
 </body>
 </html>

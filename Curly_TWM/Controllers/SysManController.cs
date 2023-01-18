@@ -35,7 +35,14 @@ namespace Curly_TWM.Controllers
         {
             ViewBag.ActionName = "متابعة الانجاز";
 
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -105,7 +112,15 @@ namespace Curly_TWM.Controllers
         public ActionResult Initiatives()
         {
             ViewBag.ActionName = "الرئيسية";
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
+            string userId = (string)Session["userId"];
+
+
             var user = db.Users.Find(userId);
             Session["user"] = user.user_fullname;
             var emp_id = user.emp_Id;
@@ -123,12 +138,20 @@ namespace Curly_TWM.Controllers
                 Session["Avatar"] = "noimage.png";
             }
 
-          
-            return View(unitfw.GenericRepos<Initiatives>().GetAll().ToList());
+            ViewBag.InitList = unitfw.GenericRepos<Initiatives>().GetAll().ToList();
+            ViewBag.InitCount = unitfw.GenericRepos<Initiatives>().GetAll().ToList().Count();
+
+
+            return View();
         }
         //تفاصيل المبادرات
         public ActionResult DetailsInitiatives(int id)
         {
+            if ((string)Session["userId"] == null)
+            {
+                return RedirectToAction("LogOff", "Account");
+            }
+
             Initiatives maindata = unitfw.Initiatives.GetObjByID(id);
             ViewBag.Uploads = unitfw.GenericRepos<InitiativesUploas>().Find(x => x.Initiativeid == id).ToList();
 

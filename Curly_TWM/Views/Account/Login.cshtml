@@ -23,6 +23,20 @@
     <!-- END: CSS Assets-->
     <link href="~/icofont.css" rel="stylesheet" />
     <link href="~/Fonts_Face.css" rel="stylesheet" />
+
+    @*//-------------------------------------------*@
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+    <script>
+
+    var css_1 = '@Session["Style"]';
+    if (css_1 == "dark") {
+        $(".light").addClass("dark").removeClass("light");
+    }
+
+    </script>
+
 </head>
 <!-- END: Head -->
 <body class="login">
@@ -96,7 +110,45 @@
     </div>
     <!-- END: Dark Mode Switcher-->
     <!-- BEGIN: JS Assets-->
+    <script src="~/Content/dist/fetch.min.js"></script>
+
     <script src="~/Content/dist/js/app.js"></script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var css_2 = '@Session["Style"]';
+            if (css_2 == "dark") {
+                $(".light").addClass("dark").removeClass("light");
+            }
+        });
+
+        async function ToggleClass() {
+
+            const response = await fetch("/Home/ToggleClass")
+                .catch(error => {
+                    console.log("handle error", error);
+                });
+            const data = await response.json();
+            console.log("Style: ", data);
+
+            if (data == "dark") {
+
+            $(".dark").addClass("light").removeClass("dark");
+
+            } else {
+
+            $(".light").addClass("dark").removeClass("light");
+
+            }
+
+        //    return data;
+        }
+    </script>
+    
     <!-- END: JS Assets-->
 </body>
 </html>
